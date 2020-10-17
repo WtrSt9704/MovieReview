@@ -1,19 +1,21 @@
 DROP TABLE MOVIE CASCADE CONSTRAINTS;
 CREATE TABLE MOVIE(
   Id NUMBER NOT NULL,
-  Original_title  VARCHAR(30) NOT NULL,
-  Num_of_votes  NUMBER DEFAULT 0,
-  Runtime_minutes NUMBER NOT NULL,
-  Discription VARCHAR(200),
-  Types NUMBER Default 3, -- 0: MOVIE, 1: TV SERIES, 2: KnuMovieDB Original, 3: Other
-  Cumulative_audience Number DEFAULT 0,
+ 	Title  VARCHAR(100) NOT NULL,
+  mType VARCHAR(30) NOT NULL, 
+  Runtime NUMBER NOT NULL,
+  --Cumulative_audience Number DEFAULT 0,
+  Start_year DATE NOT NULL,
   End_year DATE,
-  Start_year DATE,
-  Keyword VARCHAR(10),
-  Famous_line VARCHAR(25),
+  --Keyword VARCHAR(10),
+  --Famous_line VARCHAR(25),
   Admin_id  VARCHAR(25) NOT NULL,
   Rating FLOAT DEFAULT 0,
+  Num_of_votes  NUMBER DEFAULT 0,
+	Director VARCHAR(30),
+	Writer VARCHAR(30),
   Company VARCHAR(20),
+  Descriptions VARCHAR(200),
   PRIMARY KEY(Id)
 );
 
@@ -60,15 +62,12 @@ CREATE TABLE VERSION(
 
 DROP TABLE ACTOR CASCADE CONSTRAINTS;
 CREATE TABLE ACTOR(
-  Id         NUMBER NOT NULL,
-  Birth_day         DATE,
-  Death_day      DATE DEFAULT NULL,
-  Gender         VARCHAR(5),
-  Age         NUMBER,
-  First_name      VARCHAR(20),
-  Middle_name      CHAR,
-  Last_name      VARCHAR(20),
-  PRIMARY KEY(Id)
+Id         NUMBER NOT NULL,
+BYear         VARCHAR(4)
+Dyear         VARCHAR(4) DEFAULT NULL,
+Gender         CHAR,
+AName         VARCHAR(20),
+PRIMARY KEY(Id)
 );
 
 DROP TABLE PLAY CASCADE CONSTRAINTS;
