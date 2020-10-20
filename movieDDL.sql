@@ -11,7 +11,7 @@ CREATE TABLE MOVIE(
   Num_of_votes  NUMBER DEFAULT 0,
 	Director VARCHAR(30),
 	Writer VARCHAR(30),
-  Company VARCHAR(20),
+  Company VARCHAR(50),
   Descriptions VARCHAR(200),
   PRIMARY KEY(Id)
 );
