@@ -4,11 +4,8 @@ CREATE TABLE MOVIE(
  	Title  VARCHAR(100) NOT NULL,
   mType VARCHAR(30) NOT NULL, 
   Runtime NUMBER NOT NULL,
-  --Cumulative_audience Number DEFAULT 0,
   Start_year DATE NOT NULL,
   End_year DATE,
-  --Keyword VARCHAR(10),
-  --Famous_line VARCHAR(25),
   Admin_id  VARCHAR(25) NOT NULL,
   Rating FLOAT DEFAULT 0,
   Num_of_votes  NUMBER DEFAULT 0,
@@ -27,17 +24,14 @@ CREATE TABLE ACCOUNT(
   Password VARCHAR(25) NOT NULL,
   Phone_number VARCHAR(20) NOT NULL,
 
-  Membership_grade NUMBER, -- 0: basic, 1: premium 2: prime
+  Membership_grade NUMBER, -- 0: basic, 1: premium 2: prime 3: admin
   -- Addtion info
   Birthday DATE,
-  is_admin NUMBER DEFAULT 0, -- 0: USER, 1: ADMIN
   Gender CHAR,
   Address VARCHAR(30),
   Job VARCHAR(15),
   Watching_limit NUMBER,
-  First_name VARCHAR(20),
-  Middle_name VARCHAR(20),
-  Last_name VARCHAR(20),
+  Aname VARCHAR(30),
   PRIMARY KEY(Id),
   UNIQUE(Phone_number)
 );
@@ -52,35 +46,33 @@ CREATE TABLE USERS(
 DROP TABLE VERSION CASCADE CONSTRAINTS;
 CREATE TABLE VERSION(
   Movie_id      NUMBER,
-  Subtitle         VARCHAR(20),
   Title         VARCHAR(20) NOT NULL,   
   Region         VARCHAR(20) NOT NULL,
   Language         VARCHAR(20) NOT NULL,
-  Is_original_title      NUMBER(1),
+  Is_original_title      NUMBER(1), -- 0: false, 1: true
   PRIMARY KEY(Movie_id, Region)
 );
 
 DROP TABLE ACTOR CASCADE CONSTRAINTS;
 CREATE TABLE ACTOR(
-Id         NUMBER NOT NULL,
-BYear         VARCHAR(4)
-Dyear         VARCHAR(4) DEFAULT NULL,
-Gender         CHAR,
-AName         VARCHAR(20),
-PRIMARY KEY(Id)
+  Id         NUMBER NOT NULL,
+  BYear         VARCHAR(4)
+  Dyear         VARCHAR(4) DEFAULT NULL,
+  Gender         CHAR,
+  AName         VARCHAR(20),
+  PRIMARY KEY(Id)
 );
 
 DROP TABLE PLAY CASCADE CONSTRAINTS;
 CREATE TABLE PLAY(
   Movie_id      NUMBER NOT NULL,
   Actor_id      NUMBER NOT NULL,
-  cast      VARCHAR(20), -- role name
+  cast      VARCHAR(50), -- role name
   PRIMARY KEY(Movie_id, Actor_id)
 );
 
 DROP TABLE GENRE CASCADE CONSTRAINTS;
 CREATE TABLE GENRE(
-    --Genre_Name NUMBER NOT NULL,
     Name VARCHAR(20) NOT NULL,
     PRIMARY KEY(Name)
 );
@@ -88,7 +80,6 @@ CREATE TABLE GENRE(
 DROP TABLE GENRE_OF CASCADE CONSTRAINTS;
 CREATE TABLE GENRE_OF(
     Movie_id NUMBER NOT NULL,
-    -- G_name NUMBER NOT NULL,
     Genre_name VARCHAR(20) NOT NULL,
     PRIMARY KEY(Movie_id, Genre_Name)
 );
