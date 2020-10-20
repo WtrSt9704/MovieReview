@@ -1,0 +1,108 @@
+---------------------------------------------변동사항 -------------------------------------------------
+MOVIE
+Average_rating을  Rating 으로 바꿨습니다.
+Original_title을 Title로 바꿨습니다.
+Types를 mtype으로 바꿨습니다.
+keyword 쿼리문 작성 해본 결과 사용하지 않아 삭제 하였습니다.
+movie_id를 Id로 바꿨습니다.
+Cumulative_audience - 쿼리문 작성 결과 사용하지 않아 삭제하였습니다.
+director - imdb를 참고하여 추가하였습니다.
+Writer - imdb를 참고하여 추가하였습니다.
+Company  - imdb를 참고하여 추가하였습니다.
+
+ACCOUNT
+phone_number는 중복 사용될 가능성이 있어 일반 Attribute로 바꿨습니다
+First_name,Middle_name, Last_name을 name 으로 통합 하였습니다.
+watching_count - 쿼리문 작성 결과 사용하지 않아 삭제하게 되었습니다.
+Watching_limit - 쿼리문 작성 결과 사용하지 않아 삭제하게 되었습니다.
+Membership_grade에 Admin이 될수 있는 값을 추가하였습니다.
+(0은 basic, 1은 primium, 2는 prime, 3은 Admin입니다.)
+
+VERSION
+sub_Title - 쿼리문 작성 결과 사용하지 않아 삭제하였습니다.
+
+ACTOR
+birth_year를 Byear로 바꿨습니다.
+Death_year를 Dyear로 바꿨습니다.
+Actor_id를 Id로 바꿨습니다.
+Famous_role_name을 쿼리문 작성결과 사용하지 않아 삭제하였습니다.
+First_name,Middle_name, Last_name을 Aname으로 통합하였습니다.
+
+COMPANY 
+movie의 Attribute 로 작성되어 COMPANY entity를 삭제하였습니다.
+
+Rating
+Comment - 쿼리문 작성결과 사용하지 않아 삭제하게 되었습니다.
+
+USER
+쿼리문 작성결과 사용하지 않아 USER와 그의 관계인 LOG_IN을 삭제하게 되었습니다.
+
+ADMIN
+ 쿼리문 작성 결과 사용하지 않아 ADMIN과 그의 관계인 ADMINISTRATE를 삭제하게 되었습니다.
+
+
+-RELATIONSHIP-
+
+REVIEW
+REVIEW의 기능이 Rating이랑 같다고 판단되어 삭제하였습니다.
+
+
+
+---------- ER-to-Relational Mapping -----------------------------------
+Step1: Mapping of Regular Entity Types
+- MOVIE(Id(PK), Title, mType, Runtime, Start_year, End_year, Rating, Num_of_votes, Director, Writer, Company, Descriptions)
+- ACCOUNT(Id(PK), Password, Phone_number, Name, Gender, Birthday, Job, Address, Age)
+- GENRE(name(PK))
+- ACTOR(Id(PK), Byear, Dyear, Gender, Aname)
+
+Step2: Mapping of Weak Entity Types
+- VERSION(Movie_id(FK), Title, Title, Region, Language, Is_original_title)
+  - PK: (Movie_id, Title)
+- EPISODE(Movie_id(FK), EP_title, EP_num, Season_title, Season_num)
+	- PK: (Movie_id, EP_title)
+- RATING(Rating_id, Account_id(FK), Stars, Movie_id(FK))
+	- PK: (Rating_id, Account_id)
+
+Step3: Mapping of Binary 1:1 Relationship Types
+- We have no binary 1:1 relationship types.
+
+Step4: Mapping of Binary 1:N Relationship Types
+(All Binary 1:N Relationship Types in this databse already have FKs by step2.)
+- BRANCH (1:N, MOVIE <-> VERSION)
+	- Add Movie_id(FK) to VERSION
+- EPISODE_OF (1:N, MOVIE <-> EPISODE)
+	- ADD Movie_id(FK) to EPISODE
+- HAS (1:N, MOVIE <-> RATING)
+	- Add Movie_id(FK) to RATING
+- MAKE (1:N, ACCOUNT <-> RATING)
+	- Add Account_id(FK) to RATING
+
+Step5: Mapping of Binary M:N Relationship Types
+- PLAY (N:M, MOVIE <-> ACTOR)
+	- Create a new relation PLAY
+	- PLAY(Movie_id(FK), Actor_id(FK), cast)
+- GENRE_OF (N:M, MOVIE <-> GENRE)
+	- Create a new relation GENRE_OF
+	- GENRE_OF(Movie_id(FK), Genre_name(FK))
+- WATCH (N:M, MOVIE <-> ACCOUNT)
+	- Create a new relation WATCH
+	- WATCH(Movie_id(FK), Account_id(FK))
+
+Step6: Mapping of Multivalued Attributes
+- N.A.
+
+Step7: Mapping of N-ary Relationship Types
+- N.A.
+
+Summary:
+- MOVIE(Id(PK), Title, mType, Runtime, Start_year, End_year, Rating, Num_of_votes, Director, Writer, Company, Descriptions)
+- ACCOUNT(Id(PK), Password, Phone_number, Name, Gender, Birthday, Job, Address, Age)
+- GENRE(name(PK))
+- ACTOR(Id(PK), Byear, Dyear, Gender, Aname);
+- VERSION(Movie_id(FK), Title, Title, Region, Language, Is_original_title)
+- EPISODE(Movie_id(FK), EP_title, EP_num, Season_title, Season_num)
+- RATING(Rating_id, Account_id(FK), Stars, Movie_id(FK))
+- PLAY(Movie_id(FK), Actor_id(FK), cast)
+- GENRE_OF(Movie_id(FK), Genre_name(FK))
+- WATCH(Movie_id(FK), Account_id(FK))
+- REVIEW(Account_id(FK), Movie_id(FK), Review_limit)

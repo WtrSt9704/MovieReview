@@ -13,7 +13,6 @@ FROM (
   HAVING COUNT(Account_id) >= 5
 );
 
---DELETE FROM Genre_of WHERE Genre_name='Romance' AND Movie_id=22;
 -- Q4
 SELECT COUNT(M.Title)
 FROM MOVIE M, GENRE_OF G
@@ -99,8 +98,28 @@ WHERE NOT EXISTS (SELECT G.Genre_name FROM GENRE_OF G WHERE M.id = G.Movie_id AN
   M.Start_year >= TO_DATE('2010-01-01', 'yyyy-mm-dd') AND
   P.Actor_id = A.id AND P.Movie_id = M.id;
 
--- Q14
--- Q15
+--Q14
+ select count(M.id)
+ from movie M
+ where extract(YEAR from M.start_year)= ( select extract(YEAR from A.BIRTHDAY)
+ from account A
+ where  A.age = (select min(A.age)
+      from account A
+      where A.MEMBERSHIP_GRADE =2
+      group by A.MEMBERSHIP_GRADE));
+      
+--Q15
+Select M.title
+from movie M
+where M.MTYPE != 'tvSeries' and M.rating<8 and M.id IN (select RR.movie_id
+from rating RR
+where RR.account_id=(select A.id
+from account A
+where A.membership_grade=1 and A.id =(select R.ACCOUNT_ID
+from rating R 
+group by R.account_Id
+having count(R.account_id)=10)));
+
 -- Q16
 SELECT A.Phone_number, A.address
 FROM Account A
@@ -174,8 +193,35 @@ WHERE (
     GROUP BY P.movie_id
   ) <= 5 AND (M.mType='movie' OR M.mType='tvSeries');
 
--- Q19:
--- Q20:
+
+-- Q19
+select mmmm.TITLE
+from movie mmmm
+where mmmm.runtime=(select mmm.RUNTIME
+from movie mmm
+where mmm.rating = (select max(mm.RATING)
+from movie mm
+where mm.rating not in(select max(rating)from movie) and mm.id in (select DISTINCT PP.MOVIE_ID
+from play PP
+where PP.actor_id in (select distinct P.Actor_id
+from play P
+where p.movie_id in (select M.id
+from movie M
+where M.rating =(
+select max(MM.rating)
+from movie MM
+))))) and mmm.id in (select DISTINCT PP.MOVIE_ID
+from play PP
+where PP.actor_id in (select distinct P.Actor_id
+from play P
+where p.movie_id in (select M.id
+from movie M
+where M.rating =(
+select max(MM.rating)
+from movie MM
+)))));
+
+-- Q20
 CREATE OR REPLACE VIEW inclue_genre
 AS
   select m.id
@@ -239,20 +285,6 @@ AS
         where ranking = 1
       )
   );
-  
-   select start_year
-    from movie
-    where id = 
-      (
-        select movie_id
-        from
-        (
-          select r.movie_id, 
-          row_number() OVER (ORDER BY count(r.movie_id) ASC) AS ranking
-          from inclue_genre ig, rating r
-          where r.movie_id = ig.id
-          group by r.movie_id
-        )
-        where ranking = 1
-      );
-select * from account;
+
+
+
