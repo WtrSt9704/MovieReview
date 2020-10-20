@@ -113,7 +113,6 @@ DROP TABLE RATING CASCADE CONSTRAINTS;
 CREATE TABLE RATING(
     Rating_id  NUMBER,
     Account_id VARCHAR(25) NOT NULL,
-    Comments VARCHAR(200),
     Stars NUMBER NOT NULL,
     Movie_id NUMBER NOT NULL,
     PRIMARY KEY(Rating_id, Account_Id)
