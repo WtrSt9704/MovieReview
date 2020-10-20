@@ -1,7 +1,17 @@
 
-INSERT INTO VERSION VALUES( 1,'Mistakes', 'UA', 'uk', 0);
-INSERT INTO VERSION VALUES( 2,'Game of Thrones', 'UA', 'uk', 0);
-INSERT INTO VERSION VALUES( 3,'Free', 'UA', 'uk', 0);
+INSERT INTO VERSION VALUES( 1,'Makes', 'UA', 'uk', 0);
+INSERT INTO VERSION VALUES( 2,'Gamrones', 'UA', 'uk', 0);
+INSERT INTO VERSION VALUES( 3,'ee', 'UA', 'uk', 0);
+
+INSERT INTO VERSION VALUES( 1,'Mistes', 'US', 'en-us', 0);
+INSERT INTO VERSION VALUES( 2,'Game hrones', 'US', 'en-us', 0);
+INSERT INTO VERSION VALUES( 3,'Fe', 'US', 'en-us', 0);
+
+INSERT INTO VERSION VALUES( 1,'Mis', 'UK', 'en-uk', 0);
+INSERT INTO VERSION VALUES( 2,'Game ofones', 'UK', 'en-uk', 0);
+INSERT INTO VERSION VALUES( 3,'Frjjjee', 'UK', 'en-uk', 0);
+
+
 INSERT INTO VERSION VALUES( 4,'Empire on the waterfront', 'UA', 'uk', 0);
 INSERT INTO VERSION VALUES( 5,'Home', 'UA', 'uk', 0);
 INSERT INTO VERSION VALUES( 6,'Spartacus Blood and sand', 'UA', 'uk', 0);

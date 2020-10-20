@@ -1,5 +1,5 @@
 INSERT INTO ACCOUNT values ( 'admin','682030', '010-7712-6570','Katrin Tempel',3,'M',59,TO_DATE('1961-11-20','yyyy-mm-dd'),'manager','642 Voss,Houston,TX,USA');
-INSERT INTO ACCOUNT values ( 'jngds2','694198', '010-5512-6565','Wolfgang Stauch',2,'M',10,TO_DATE('2010-05-29','yyyy-mm-dd'),'student','3323 Castle, Spring, TX,USA');
+INSERT INTO ACCOUNT values ( 'jngds2','694198', '010-5512-6565','Wolfgang Stauch',2,'M',10,TO_DATE('2020-02-08','yyyy-mm-dd'),'student','3323 Castle, Spring, TX,USA');
 INSERT INTO ACCOUNT values ( 'ffbee3','714309', '010-5212-6560','Eun-Jeong Kim',2,'M',32,TO_DATE('1988-11-29','yyyy-mm-dd'),'pharmacist','5632 Rice, Houston, TX,USA');
 INSERT INTO ACCOUNT values ( 'erwtee5','805432', '010-5802-6569','Chris Raymond',2,'M',50,TO_DATE('1970-05-11','yyyy-mm-dd'),'police officer','449 ,Bukgu, Daggu, Korea');
 INSERT INTO ACCOUNT values ( 'gd1231fd','813353', '010-9240-6570','Johanne McAndrew',2,'M',50,TO_DATE('1970-05-10','yyyy-mm-dd'),'professor','54669,Haeundae,Busan,Korea');
@@ -114,3 +114,4 @@ INSERT INTO ACCOUNT values ( 'vebsb1','914382', '010-7712-6565','Matt Drudge',0,
 INSERT INTO ACCOUNT values ( 'kkk44','6450', '010-8732-6568','Anja Kammerling',0,'','','','','');
 INSERT INTO ACCOUNT values ( 'afadf55','22856', '010-9240-6567','Giuseppe Culicchia',0,'','','','','');
 INSERT INTO ACCOUNT values ( 'kkfkff4','10021556', '010-4012-6562','Silke Zertz',0,'','','','','');
+commit;
