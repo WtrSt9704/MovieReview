@@ -56,7 +56,7 @@ CREATE TABLE VERSION(
 DROP TABLE ACTOR CASCADE CONSTRAINTS;
 CREATE TABLE ACTOR(
   Id         NUMBER NOT NULL,
-  BYear         VARCHAR(4)
+  BYear         VARCHAR(4),
   Dyear         VARCHAR(4) DEFAULT NULL,
   Gender         CHAR,
   AName         VARCHAR(20),
