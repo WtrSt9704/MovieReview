@@ -9,10 +9,10 @@ CREATE TABLE MOVIE(
   Admin_id  VARCHAR(25) NOT NULL,
   Rating FLOAT DEFAULT 0,
   Num_of_votes  NUMBER DEFAULT 0,
-	Director VARCHAR(30),
-	Writer VARCHAR(30),
-  Company VARCHAR(50),
-  Descriptions VARCHAR(200),
+	Director VARCHAR(110),
+	Writer VARCHAR(100),
+  Company VARCHAR(100),
+  Descriptions VARCHAR(500),
   PRIMARY KEY(Id)
 );
 
