@@ -23,15 +23,14 @@ CREATE TABLE ACCOUNT(
   Id VARCHAR(25),
   Password VARCHAR(25) NOT NULL,
   Phone_number VARCHAR(20) NOT NULL,
-
-  Membership_grade NUMBER, -- 0: basic, 1: premium 2: prime 3: admin
+  Name VARCHAR(30),
+  Membership_grade NUMBER, -- 0: basic, 1: premium 2: prime  3:admin
   -- Addtion info
-  Birthday DATE,
   Gender CHAR,
+  Age NUMBER,      
+  Birthday DATE,
+  Job VARCHAR(20),
   Address VARCHAR(30),
-  Job VARCHAR(15),
-  Watching_limit NUMBER,
-  Aname VARCHAR(30),
   PRIMARY KEY(Id),
   UNIQUE(Phone_number)
 );
