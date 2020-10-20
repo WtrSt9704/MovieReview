@@ -1,4 +1,3 @@
-
 INSERT INTO MOVIE  VALUES ( 1,'Misfits', 'tvSeries', 60,TO_DATE('2009-11-12', 'yyyy-mm-dd'), NULL, 'admin', 8.2, 91812, 'Bradford May', 'Alexander Black', 'Alexander Black Photoplays', 'The adventures of a female reporter in the 1890s.');
 INSERT INTO MOVIE  VALUES ( 2,'Game of Thrones', 'tvSeries', 57,TO_DATE('2011-04-17', 'yyyy-mm-dd'), NULL, 'admin', 8.5, 1714941, 'Kimble Rendall', 'Charles Tait', 'J. and N. Tait', 'True story of notorious Australian outlaw Ned Kelly (1855-80).');
 INSERT INTO MOVIE  VALUES ( 3,'Boss', 'tvSeries', 56,TO_DATE('2011-10-21', 'yyyy-mm-dd'), NULL, 'admin', 9.6, 16929, 'Jesper Ganslandt', 'Urban Gad, Gebhard Schtzler-Perasini', 'Fotorama', 'Two men of high rank are both wooing the beautiful and famous equestrian acrobat Stella. While Stella ignores the jeweler Hirsch, she accepts Count von Waldbergs offer to follow her home, ...');

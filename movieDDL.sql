@@ -45,7 +45,7 @@ CREATE TABLE USERS(
 DROP TABLE VERSION CASCADE CONSTRAINTS;
 CREATE TABLE VERSION(
   Movie_id      NUMBER,
-  Title         VARCHAR(20) NOT NULL,   
+  Title         VARCHAR(200) NOT NULL,   
   Region         VARCHAR(20) NOT NULL,
   Language         VARCHAR(20) NOT NULL,
   Is_original_title      NUMBER(1), -- 0: false, 1: true
