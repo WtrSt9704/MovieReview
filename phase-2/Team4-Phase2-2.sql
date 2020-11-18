@@ -81,7 +81,7 @@ INSERT INTO ACCOUNT values ( '1111dd','10031855', '010-4412-6560','Jacy Young',1
 INSERT INTO ACCOUNT values ( 'qwqwqw5','751442', '010-1012-6559','Thomas Lì² scher',1,'F',43,TO_DATE('1977-05-30','yyyy-mm-dd'),'','');
 INSERT INTO ACCOUNT values ( 'vvvewf4e','340052', '010-2012-6562','John Ajvide Lindqvist',1,'F',43,TO_DATE('1977-05-26','yyyy-mm-dd'),'','');
 INSERT INTO ACCOUNT values ( 'wrtwtr5','316736', '010-1912-6565','Bernhard Franz',1,'F',43,TO_DATE('1977-04-12','yyyy-mm-dd'),'','');
-INSERT INTO ACCOUNT values ( 'weee5','266820', '010-7712-6567','Bence Trunkì²?,1,'F',45,TO_DATE('1975-05-30','yyyy-mm-dd'),'lawyer','4668,Haeundae,  Busan, Korea');
+INSERT INTO ACCOUNT values ( 'weee5','266820', '010-7712-6567','Bence Trunk',1,'F',45,TO_DATE('1975-05-30','yyyy-mm-dd'),'lawyer','4668,Haeundae,  Busan, Korea');
 INSERT INTO ACCOUNT values ( 'piirrr1','149305', '010-8732-6570','Regine Bielefeldt',1,'F',46,TO_DATE('1974-03-03','yyyy-mm-dd'),'government empolyee','979 Fire Oak, Humble, TX,USA');
 INSERT INTO ACCOUNT values ( 'avzv1','136346', '010-5260-6571','Nathan Cockerill',1,'F',46,TO_DATE('1974-03-03','yyyy-mm-dd'),'police officer','448 ,Bukgu, Daggu, Korea');
 INSERT INTO ACCOUNT values ( 'dcvddd2','995965', '010-1110-6541','Ray Cory Daniels',1,'F',47,TO_DATE('1973-03-02','yyyy-mm-dd'),'','');
