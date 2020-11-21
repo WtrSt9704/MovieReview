@@ -28,10 +28,12 @@ public class Main {
 			System.exit(1);
 		}
 		
+		/* Start */
 		while (true) {
-			if (LandingPage.land(conn, stmt)) {
+			User user = new User(null, null);
+			if (LandingPage.display(conn, stmt, user)) {
 				//System.out.println("Login Success!");
-				
+				FunctionPage.doFunctions(conn, stmt, user);
 			} else {
 				break;
 			}

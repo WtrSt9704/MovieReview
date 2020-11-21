@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class MyPage {
 	public static Scanner sc = new Scanner(System.in);
-	public static void mypage1(Connection conn,Statement stmt,String id,String password) {
-		
+	public static void display(Connection conn,Statement stmt, User user) {
 		while (true) {	
 			System.out.println("원하는 기능을 선택하세요.");
 			System.out.println("1: 정보수정");
@@ -18,15 +17,15 @@ public class MyPage {
 			if(func==4) break;
 			
 			if(func==1) {
-				update(conn,stmt,id,password);
+				update(conn, stmt, user.getId(), user.getPW());
 			}
 			else if(func==2)
 			{
-				changepwd(conn,stmt,id,password);
+				changepwd(conn, stmt, user.getId(), user.getPW());
 			}
 			else if(func==3)
 			{
-				drop(conn,stmt,id,password);
+				drop(conn, stmt, user.getId(), user.getPW());
 				break;
 			}
 			

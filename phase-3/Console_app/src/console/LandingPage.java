@@ -4,8 +4,18 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class LandingPage {
+	private String id = null;
+	
+	public String getId() {
+		return this.id;
+	}
+	
+	public void set(String id) {
+		this.id = id;
+	}
+	
 	public static Scanner sc = new Scanner(System.in);
-	public static boolean land(Connection conn, Statement stmt) {
+	public static boolean display(Connection conn, Statement stmt, User user) {
 		while (true) {
 			System.out.println("원하는 기능을 선택하세요.");
 			System.out.println("1: 가입");
@@ -20,7 +30,7 @@ public class LandingPage {
 			}
 			else if(func==2)
 			{
-				if (login(conn,stmt)) {
+				if (login(conn, stmt, user)) {
 					return true;
 				};
 			}
@@ -97,7 +107,7 @@ public class LandingPage {
 		}	
 	}
 	
-	public static boolean login(Connection conn,Statement stmt) {
+	public static boolean login(Connection conn, Statement stmt, User user) {
 		String id;
 		String password;
 		String sql ="";
@@ -105,9 +115,11 @@ public class LandingPage {
 		clearScr();
 		System.out.print("ID : ");
 		id = sc.next();
+		user.setId(id);
 		sc.nextLine();
 		System.out.print("Password : ");
 		password=sc.next();
+		user.setPW(password);
 		sc.nextLine();
 						
 		try {
@@ -130,6 +142,8 @@ public class LandingPage {
 		}
 		return false;
 	}
+	
+
 	
 	
 	
