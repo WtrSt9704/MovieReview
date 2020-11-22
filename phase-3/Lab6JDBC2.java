@@ -131,7 +131,7 @@ public class Lab6JDBC {
 		membership_grade = sc.nextInt();
 		
 		//sc.nextLine();
-		System.out.print("Gender :");
+		System.out.print("Gender(M or F) :");
 		gender = sc.nextLine();
 	/*	if(gender.equals(""))
 		{
@@ -472,7 +472,7 @@ public static void movieenroll(Connection conn,Statement stmt,String id) {
 	startyear= sc.next();
 
 	sc.nextLine();
-	System.out.print("endyear : ");
+	System.out.print("endyear(yyyy-mm-dd) : ");
 	endyear= sc.nextLine();
 	
 	if(endyear.equals(""))
