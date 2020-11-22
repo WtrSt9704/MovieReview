@@ -4,17 +4,8 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class LandingPage {
-	private String id = null;
-	
-	public String getId() {
-		return this.id;
-	}
-	
-	public void set(String id) {
-		this.id = id;
-	}
-	
 	public static Scanner sc = new Scanner(System.in);
+	/* return true if success login, return false if terminated*/
 	public static boolean display(Connection conn, Statement stmt, User user) {
 		while (true) {
 			System.out.println("원하는 기능을 선택하세요.");
@@ -22,7 +13,7 @@ public class LandingPage {
 			System.out.println("2: 로그인");
 			System.out.println("3: 종료");
 			int func = sc.nextInt();
-			
+			sc.nextLine(); // flush the buffer
 			if(func==3) break;
 			
 			if(func==1) {
@@ -35,22 +26,18 @@ public class LandingPage {
 				};
 			}
 			
-			clearScr();
+			Util.clearScr();
 		}
 		return false;
 	}
 	
-	public static void clearScr() {
-	    for (int i = 0; i < 100; i++)
-	      System.out.println("");
-	}
 	
 	public static void signup(Connection conn,Statement stmt) {
 		try {
 			conn.setAutoCommit(false);
 			stmt = conn.createStatement();
 			String sql ="";
-			clearScr();
+			Util.clearScr();
 		
 			String id;
 			String password;
@@ -112,7 +99,7 @@ public class LandingPage {
 		String password;
 		String sql ="";
 		ResultSet rs;
-		clearScr();
+		Util.clearScr();
 		System.out.print("ID : ");
 		id = sc.next();
 		user.setId(id);
@@ -142,9 +129,4 @@ public class LandingPage {
 		}
 		return false;
 	}
-	
-
-	
-	
-	
 }

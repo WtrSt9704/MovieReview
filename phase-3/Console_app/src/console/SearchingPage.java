@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class SearchingPage {
 	public static Scanner sc = new Scanner(System.in);
 	
+	
+	
 	public static void makeMap(Map<String, String> mp, String[] collection) {
 		for (int i = 0; i < collection.length; ++i) {
 			mp.put(Integer.toString(i+1), collection[i]);
@@ -15,34 +17,31 @@ public class SearchingPage {
 	}
 	
 	public static void retrieveAll(Connection conn, User user) {
-		clearScr();
+		Util.clearScr();
 		System.out.println("retrieveAll");
 		
-		String sql = "select title, rating\r\n"
+		String sql = "select m.id, title, rating\r\n"
 				+ "from movie m" + " where ";
 		
-		printMovie(conn, sql, user);
-		
-		while ((sc.next().charAt(0)) != 'q') {
-			sc.nextLine();
+		if (Util.printMovie(conn, sql, user) != 0) {
+			Util.afterList(conn, user);
 		}
 	}
 	
 	public static void retrieveTitle(Connection conn, String stitle, User user) {
-		clearScr();
+		Util.clearScr();
 		System.out.println("retrieveTitle");
-		
-		String sql = "select title, rating\r\n"
+		String sql = "select m.id, title, rating\r\n"
 				+ "from movie m\r\n"
 				+ "where title like " + "'%" + stitle + "%'" + " and ";
 		
-		printMovie(conn, sql, user);
-		while ((sc.next().charAt(0)) != 'q') {
-			sc.nextLine();
+		if (Util.printMovie(conn, sql, user) != 0) {
+			Util.afterList(conn, user);
 		}
 	}
 	
 	public static void retrieveFilter(Connection conn, User user) {
+		//sc.nextLine();
 		String choice;
 		String[] choices;
 		
@@ -65,12 +64,12 @@ public class SearchingPage {
 		
 		
 		
-		clearScr();
+		Util.clearScr();
 		System.out.println("retrieveFilter");
-		String sql = "select v.title, m.rating, v.region\r\n"
+		String sql = "select m.id, v.title, m.rating, v.region\r\n"
 				+ "from movie m, version v, genre_of go\r\n"
 				+ "where\r\n"
-				+ "    v.movie_id = m.id and go.movie_id = m.id" + " and ";
+				+ "    v.movie_id = m.id and go.movie_id = m.id ";
 		
 		System.out.println("각 필터에 적용하길 원하는 내용의 숫자를 선택해주세요.");
 		System.out.println("< 영상물 종류 >");
@@ -123,50 +122,15 @@ public class SearchingPage {
 				sql += " or ";
 			}
 		}
-		sql += ") ";
-		clearScr();
-		System.out.println(sql);
+		sql += ") and ";
+		Util.clearScr();
+		//System.out.println(sql);
 		
-		printMovie(conn, sql, user);
-		
-		while ((sc.next().charAt(0)) != 'q') {
+		if (Util.printMovie(conn, sql, user) != 0) {
+			Util.afterList(conn, user);
+		} else {
+			System.out.println("조회할 수 있는 영화가 없습니다. 아무키나 입력해주세요.");
 			sc.nextLine();
-		}
-	}
-	
-	public static void clearScr() {
-	    for (int i = 0; i < 100; i++)
-	      System.out.println("");
-	}
-	
-	public static void printMovie(Connection conn, String sql, User user) {
-		/* except movies rated by the user */
-		sql += " not exists (\r\n"
-				+ "  select r.rating_id\r\n"
-				+ "  from rating r\r\n"
-				+ "  where r.movie_id = m.id and r.account_id = " + "'" + user.getId() + "')";
-		
-		ResultSet rs = null;
-	    PreparedStatement pstmt = null;
-		try {
-			pstmt = conn.prepareStatement(sql);
-		} catch (SQLException ex2) {
-			System.err.println("stmt error = " + ex2.getMessage());
-			System.exit(1);
-		}
-		try {
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String title = rs.getString(1);
-				Double rating = rs.getDouble(2);
-				System.out.println("Title: " + title + ",\trating: " + rating);
-	        }
-	        if(rs != null) rs.close();
-	        if(pstmt != null) pstmt.close();
-			pstmt.close(); 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }
