@@ -39,7 +39,7 @@ public class RatingPage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("\n나갈려면 q를 입력해 주세요.");
+		System.out.println("\n나가려면 q를 입력해 주세요.");
 		while (true) {
 			String exit = sc.nextLine();
 			if (exit.length() == 0) continue;
@@ -79,7 +79,7 @@ public class RatingPage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("나갈려면 q를 입력해 주세요.");
+		System.out.println("나가려면 q를 입력해 주세요.");
 		while (true) {
 			String exit = sc.nextLine();
 			if (exit.length() == 0) continue;

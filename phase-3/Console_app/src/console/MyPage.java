@@ -23,10 +23,13 @@ public class MyPage {
 				break;
 
 			if (func == 1) {
+				Util.clearScr();
 				update(conn, stmt, user.getId(), user.getPW());
 			} else if (func == 2) {
+				Util.clearScr();
 				changepwd(conn, stmt, user.getId(), user.getPW());
 			} else if (func == 3) {
+				Util.clearScr();
 				drop(conn, stmt, user.getId(), user.getPW());
 				return false;
 			}
@@ -36,18 +39,72 @@ public class MyPage {
 	}
 
 	public static void update(Connection conn, Statement stmt, String id, String password) {
-
+		
 		Util.clearScr();
-		System.out.print("What do you change? : 1.JOB 2.Address 3.Exit");
-		int func = sc.nextInt();
+		String information;
+		
+		System.out.print("What do you change? (phone_number,name,membership,job,address,birthday)");
+		
+		information = sc.next();
+		
+		String sql = String.format("UPDATE ACCOUNT SET %s = ? where ACCOUNT.id ='%s' and ACCOUNT.password = '%s'",information,id,password);
+		int res=0;
+		if(information.equals("membership"))
+		{	
+			int runtime;
+			System.out.print("Input to change : ");
+			runtime=sc.nextInt();
 
-		if (func == 3)
-			return;
+			try {	
+				conn.setAutoCommit(false);
+				PreparedStatement ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, runtime);
+				
+				res=ps.executeUpdate();
+				System.out.println("Update completed");
+				
+				conn.commit();
+			}catch(SQLException ex2) {
+				System.err.println("sql error = "+ex2.getMessage());
+//				sc.nextLine();
+				return;
+			}	
+		}
+		
+		else
+		{
+			String data;
+			System.out.print("Input to change : ");
+			data=sc.next();
+			
+			String newdata =data; 
 
-		if (func == 1) {
-			changejob(conn, stmt, id, password);
-		} else if (func == 2) {
-			changeaddress(conn, stmt, id, password);
+			try {	
+				conn.setAutoCommit(false);
+				PreparedStatement ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, newdata);
+				
+				res=ps.executeUpdate();
+		
+				System.out.println("Update completed");
+				
+				conn.commit();
+			}catch(SQLException ex2) {
+				System.err.println("sql error = "+ex2.getMessage());
+//				sc.nextLine();
+				return;
+			}		
+		}
+		System.out.println("나가려면 q를 입력해 주세요.");
+
+		while (true) {
+			String exit = sc.nextLine();
+			if (exit.length() == 0)
+				continue;
+			if (exit.charAt(0) == 'q')
+				break;
 		}
 	}
 
@@ -68,49 +125,18 @@ public class MyPage {
 			conn.commit();
 		} catch (SQLException ex2) {
 			System.err.println("sql error = " + ex2.getMessage());
-			System.exit(1);
+//			System.exit(1);
 		}
-	}
+		System.out.println("나가려면 q를 입력해 주세요.");
 
-	public static void changejob(Connection conn, Statement stmt, String id, String password) {
-
-		System.out.print("input your new job : ");
-		String newjob = sc.next();
-		sc.nextLine();
-
-		String sql = String.format("UPDATE ACCOUNT SET JOB = '%s' where ACCOUNT.ID ='%s' and ACCOUNT.PASSWORD ='%s'",
-				newjob, id, password);
-		try {
-			conn.setAutoCommit(false);
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
-			System.out.println("Having changed job");
-			conn.commit();
-		} catch (SQLException ex2) {
-			System.err.println("sql error = " + ex2.getMessage());
-			System.exit(1);
+		while (true) {
+			String exit = sc.nextLine();
+			if (exit.length() == 0)
+				continue;
+			if (exit.charAt(0) == 'q')
+				break;
 		}
-	}
 
-	public static void changeaddress(Connection conn, Statement stmt, String id, String password) {
-		String cdaddress;
-		System.out.print("input your new password : ");
-		cdaddress = sc.next();
-		sc.nextLine();
-
-		String sql = String.format(
-				"UPDATE ACCOUNT SET ADDRESS = '%s' where ACCOUNT.ID ='%s' and ACCOUNT.PASSWORD ='%s'", cdaddress, id,
-				password);
-		try {
-			conn.setAutoCommit(false);
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
-			System.out.println("Having changed address");
-			conn.commit();
-		} catch (SQLException ex2) {
-			System.err.println("sql error = " + ex2.getMessage());
-			System.exit(1);
-		}
 	}
 
 	public static void drop(Connection conn, Statement stmt, String id, String password) {
@@ -126,7 +152,17 @@ public class MyPage {
 			conn.commit();
 		} catch (SQLException ex2) {
 			System.err.println("sql error = " + ex2.getMessage());
-			System.exit(1);
+//			System.exit(1);
 		}
+		System.out.println("나가려면 q를 입력해 주세요.");
+
+		while (true) {
+			String exit = sc.nextLine();
+			if (exit.length() == 0)
+				continue;
+			if (exit.charAt(0) == 'q')
+				break;
+		}
+
 	}
 }

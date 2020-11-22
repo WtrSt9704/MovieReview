@@ -41,7 +41,7 @@ public class Util {
 			}
 
 		}
-		System.out.println("나갈려면 q를 입력해 주세요.");
+		System.out.println("나가려면 q를 입력해 주세요.");
 		while (true) {
 			String exit = sc.nextLine();
 			if (exit.length() == 0)
@@ -64,7 +64,7 @@ public class Util {
 			pstmt = conn.prepareStatement(sql);
 		} catch (SQLException ex2) {
 			System.err.println("stmt error = " + ex2.getMessage());
-			System.exit(1);
+			//System.exit(1);
 		}
 		try {
 			rs = pstmt.executeQuery();
