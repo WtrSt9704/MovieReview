@@ -24,7 +24,7 @@ CREATE TABLE ACCOUNT(
   Password VARCHAR(25) NOT NULL,
   Phone_number VARCHAR(20) NOT NULL,
   Name VARCHAR(30),
-  Membership_grade NUMBER, -- 0: basic, 1: premium 2: prime  3:admin
+  Membership_grade NUMBER NOT NULL, -- 0: basic, 1: premium 2: prime  3:admin
   -- Addtion info
   Gender CHAR,
   Age NUMBER,      
@@ -96,7 +96,7 @@ CREATE TABLE WATCH(
 DROP TABLE RATING CASCADE CONSTRAINTS;
 CREATE TABLE RATING(
     Rating_id  NUMBER,
-    Account_id VARCHAR(25) NOT NULL,
+    Account_id VARCHAR(25),
     Stars NUMBER NOT NULL,
     Movie_id NUMBER NOT NULL,
     PRIMARY KEY(Rating_id, Account_Id)
