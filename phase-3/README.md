@@ -201,13 +201,13 @@
 
 - Function: 콘솔창을 비운다.
 
-`afterList(Connection, User, boolean) : void`
+#### `afterList(Connection, User, boolean) : void`
 
 - Function:  영화 목록을 출력하고 일반 사용자와 관리자를 구분하여 후속 처리를 한다.
 - Parameter:
   - `boolean`: 관리자이면 `true`, 그렇지 않으면 `false`를 반환한다.
 
-`printMovie(Connection, String, User) : int`
+#### `printMovie(Connection, String, User) : int`
 
 - Function: 사용자가 평가한 영화를 제외하고 출력한다.
 - Return: 출력한 영화의 개수를 반환한다.
