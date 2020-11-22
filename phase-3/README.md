@@ -20,8 +20,6 @@
       - [`display(Connection, Statement, User) : boolean`](#-display-connection--statement--user----boolean-)
       - [`update(Connection, Statement, String id, String pw) : void`](#-update-connection--statement--string-id--string-pw----void-)
       - [`changepwd(Connection, Statement, String id, String pw) : void`](#-changepwd-connection--statement--string-id--string-pw----void-)
-      - [`changejob(Connection, Statement, String id, String pw) : void`](#-changejob-connection--statement--string-id--string-pw----void-)
-      - [`changeaddress(Connection, Statement, String id, String pw) : void`](#-changeaddress-connection--statement--string-id--string-pw----void-)
       - [`drop(Connection, Statement, String id, String pw)`](#-drop-connection--statement--string-id--string-pw--)
   * [LandingPage](#landingpage)
       - [`display(Connection, Statement, User) : boolean`](#-display-connection--statement--user----boolean--1)
@@ -32,8 +30,11 @@
       - [`movieEnroll(Connection, Statement, String) : void`](#-movieenroll-connection--statement--string----void-)
   * [Util](#util)
       - [`clearScr(): void`](#-clearscr----void-)
+      - [`afterList(Connection, User, boolean) : void`](#-afterlist-connection--user--boolean----void-)
+      - [`printMovie(Connection, String, User) : int`](#-printmovie-connection--string--user----int-)
 - [변경사항](#----)
   * [Rating 테이블](#rating----)
+  * [Account 테이블](#account----)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -153,14 +154,6 @@
 
 - Function: 사용자의 비밀번호를 변경한다.
 
-#### `changejob(Connection, Statement, String id, String pw) : void`
-
-- Function: 사용자의 직업을 변경한다.
-
-#### `changeaddress(Connection, Statement, String id, String pw) : void`
-
-- Function: 사용자의 주소를 변경한다.
-
 #### `drop(Connection, Statement, String id, String pw)`
 
 - Function: 계정을 삭제한다.
@@ -192,7 +185,7 @@
 #### `movieEnroll(Connection, Statement, String) : void`
 
 - Function: 새로운 영화를 등록한다.
-- Prameter:
+- Parameter:
   - `String`: 영화를 등록하는 관리자 ID
 
 ## Util
@@ -217,4 +210,8 @@
 ## Rating 테이블
 
 - Rating 테이블의 FK인 Account_id를 삭제시 Delete set NULL로 설정이 되어있었고, Account_id에는 NOT NULL 제약이 있어 계정을 삭제했을 때 오류가 발생했다. 이러한 이유로 Account_id의 NOT NULL제약을 삭제했다.
+
+## Account 테이블
+
+- Account 테이블의 Membership_grade 속성에 NOT NULL 제약을 추가했다.
 
