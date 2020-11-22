@@ -42,7 +42,7 @@ public class FunctionPage {
 				System.out.println("1: 영상물 전체 조회");
 				System.out.println("2: 제목으로 영상물 검색");
 				System.out.println("3: 조건으로 영상물 검색");
-				System.out.println("4: 회원 전체 평가 내역 확인"); // a
+				System.out.println("4: 회원 전체 평가 내역 확인");
 				System.out.println("5: 마이페이지");
 				System.out.println("6: 새로운 영상물 등록");
 				System.out.println("7: 로그아웃");

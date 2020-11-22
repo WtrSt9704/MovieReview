@@ -118,13 +118,15 @@ public class RatingPage {
 				SimpleDateFormat sDate = new SimpleDateFormat("yyyy-mm-dd");
 				try {
 					date = sDate.parse(ans4);
+					//System.out.println(ans4);
+					//System.out.println("date: " + date);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				SimpleDateFormat Ddate = new SimpleDateFormat("yyyy-mm-dd");
-				// System.out.println(Ddate.format(date));
-
+				//System.out.println(Ddate.format(date));
+				
 				ans6 = rs.getString(5);
 				ans7 = rs.getString(6);
 				ans8 = rs.getString(7);
