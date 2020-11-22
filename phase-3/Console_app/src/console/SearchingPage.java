@@ -48,7 +48,7 @@ public class SearchingPage {
 		String[] choices;
 
 		Map<String, String> mType = new HashMap<String, String>();
-		Map<String, String> start_year = new HashMap<String, String>();
+		//Map<String, String> start_year = new HashMap<String, String>();
 		Map<String, String> genre = new HashMap<String, String>();
 		Map<String, String> version = new HashMap<String, String>();
 		// Map<String, String> director = new HashMap<String, String>();

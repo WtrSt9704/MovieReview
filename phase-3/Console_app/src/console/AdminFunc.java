@@ -1,11 +1,11 @@
 package console;
 
 import java.util.Scanner;
-
 import java.sql.*;
-import java.util.Scanner;
+
 public class AdminFunc {
 	public static Scanner sc = new Scanner(System.in);
+
 	public static void movieUpdate(Connection conn, int movieid) {
 
 		String information;
@@ -152,7 +152,7 @@ public class AdminFunc {
 			sql = String.format(
 					"INSERT INTO MOVIE VALUES(%d,'%s','%s',%d,TO_DATE('%s','yyyy-mm-dd'),TO_DATE('%s','yyyy-mm-dd'),'%s',0,0,'%s','%s','%s','%s')",
 					movieid, title, mtype, runtime, startyear, endyear, id, director, writer, company, descriptions);
-			//System.out.println(sql);
+			// System.out.println(sql);
 			res = stmt.executeUpdate(sql);
 			if (res != 0)
 				System.out.println("movie enrollment completed.");

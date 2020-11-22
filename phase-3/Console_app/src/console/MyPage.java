@@ -28,7 +28,7 @@ public class MyPage {
 				changepwd(conn, stmt, user.getId(), user.getPW());
 			} else if (func == 3) {
 				drop(conn, stmt, user.getId(), user.getPW());
-				break;
+				return false;
 			}
 			Util.clearScr();
 		}
