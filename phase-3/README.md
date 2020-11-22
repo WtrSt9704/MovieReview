@@ -187,6 +187,28 @@
 - Function: 새로운 영화를 등록한다.
 - Parameter:
   - `String`: 영화를 등록하는 관리자 ID
+#### `movieUpdate(Connection, int) : void`
+
+## MovieEnrollFUnc
+
+#### `episode(Connection, Statement, int) : void`
+
+- Function: 추가된 tvSeries의 에피소드를 등록한다.
+- Parameter:
+ `int`: 영화의 ID
+ 
+ #### `version(Connection, Statement, int, String) : void`
+
+- Function: 추가된 영상물의 version을 등록한다.
+- Parameter:
+ `int`: 영화의 ID
+ `String': 영화의 title
+ 
+  #### `genreof(Connection, Statement, int) : void`
+
+- Function: 추가된 영상물의 genre를 등록한다.
+- Parameter:
+ `int`: 영화의 ID
 
 ## Util
 
