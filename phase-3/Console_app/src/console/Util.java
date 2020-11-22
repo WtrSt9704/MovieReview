@@ -14,7 +14,7 @@ public class Util {
 			System.out.println("");
 	}
 
-	public static void afterList(Connection conn, User user) {
+	public static void afterList(Connection conn, User user, boolean isAdmin) {
 		System.out.print("영화 상세보기를 하시겠습니까? (y/n)");
 		char ans = sc.nextLine().charAt(0);
 		if (ans == 'y' || ans == 'Y') {
@@ -25,8 +25,16 @@ public class Util {
 				sc.nextLine();
 				Util.clearScr();
 				RatingPage.showMovieDetail(conn, movie_id);
-				if (RatingPage.evaluateMovie(conn, movie_id, user.getId())) {
-					RatingPage.rerateMovie(conn, movie_id, user.getId());
+				if (isAdmin) {
+					System.out.print("영화를 업데이트 하시겠습니까? (y/n)");
+					ans = sc.nextLine().charAt(0);
+					if (ans == 'y' || ans == 'Y') {
+						AdminFunc.movieUpdate(conn, movie_id);
+					}
+				} else {
+					if (RatingPage.evaluateMovie(conn, movie_id, user.getId())) {
+						RatingPage.rerateMovie(conn, movie_id, user.getId());
+					}
 				}
 			} catch (Exception e) {
 				System.out.println("유효하지 않는 영화 Id입니다. 다시 시도해주세요.");
@@ -42,7 +50,7 @@ public class Util {
 				break;
 		}
 	}
-	
+
 	/* return the number of movies */
 	public static int printMovie(Connection conn, String sql, User user) {
 		/* except movies rated by the user */
