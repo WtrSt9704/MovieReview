@@ -12,7 +12,7 @@ ShowMovieDetail
 EvaluateMovie
 -> 한 영화의 평점을 매기는 기능이다.
 -> Account 테이블의 id를 UserID로 Movie테이블의 id를 id로 받아 계산한다.
--> Rating테이블에서 해당 계정이 영화를 평가한 기록이 있으면 update로 수정을, 없으면 Rating의 Id에 +1 하여 Insert문으로 추가한다.
+-> Rating테이블에서 해당 계정이 영화를 평가한 기록이 있으면 update로 수정을, 없으면 Rating의max(Id)에 +1 하여 Insert문으로 추가한다.
 
 
 rerateMovie
