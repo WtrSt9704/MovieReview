@@ -115,7 +115,7 @@ public class RatingPage {
 				ans3 = rs.getString(3);
 				ans4 = rs.getString(4);
 
-				SimpleDateFormat sDate = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sDate = new SimpleDateFormat("yyyy-mm-dd");
 				try {
 					date = sDate.parse(ans4);
 				} catch (ParseException e) {
