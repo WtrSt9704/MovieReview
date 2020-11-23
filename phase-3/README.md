@@ -28,10 +28,9 @@
   * [AdminFunc](#adminfunc)
       - [`movieUpdate(Connection, int) : void`](#-movieupdate-connection--int----void-)
       - [`movieEnroll(Connection, Statement, String) : void`](#-movieenroll-connection--statement--string----void-)
-  * [MovieEnrollFunc](#movieenrollfunc)
       - [`episode(Connection, Statement, int) : void`](#-episode-connection--statement--int----void-)
       - [`version(Connection, Statement, int, String) : void`](#-version-connection--statement--int--string----void-)
-      - [`genreof(Connection, Statement, int) : void`](#-genreof-connection--statement--int--string----void-)
+      - [`genreof(Connection, Statement, int) : void`](#-genreof-connection--statement--int----void-)
   * [Util](#util)
       - [`clearScr(): void`](#-clearscr----void-)
       - [`afterList(Connection, User, boolean) : void`](#-afterlist-connection--user--boolean----void-)
@@ -191,28 +190,26 @@
 - Function: 새로운 영화를 등록한다.
 - Parameter:
   - `String`: 영화를 등록하는 관리자 ID
-#### `movieUpdate(Connection, int) : void`
-
-## MovieEnrollFUnc
-
 #### `episode(Connection, Statement, int) : void`
 
 - Function: 추가된 tvSeries의 에피소드를 등록한다.
 - Parameter:
- `int`: 영화의 ID
- 
+ - `int`: 영화 ID
+
  #### `version(Connection, Statement, int, String) : void`
 
 - Function: 추가된 영상물의 version을 등록한다.
 - Parameter:
- `int`: 영화의 ID
- `String': 영화의 title
  
-  #### `genreof(Connection, Statement, int) : void`
+- `int`: 영화 ID
+
+  - `String`: 영화 title 
+
+#### `genreof(Connection, Statement, int) : void`
 
 - Function: 추가된 영상물의 genre를 등록한다.
 - Parameter:
- `int`: 영화의 ID
+ - `int`: 영화 ID
 
 ## Util
 
