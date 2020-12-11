@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>COMP322</title>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" ref="${contextPath}/css/bootstrap.css">
+</head>
+<body>
+
+<a href="">Upload</a> <a href="">Search</a> <a href="MyPage.html">MyPage</a> <a href="">Logout</a> 
+<hr>
+<form action="SearchResult.jsp" method="POST">
+
+	Search: <input type="text" name="search_data"> <input type="submit" value="검색하기"/>
+	<br/><br>
+	영상물 종류
+	<div>
+		<input type="checkbox" id="movie" name="mtypes" value="movie">movie
+		<input type="checkbox" id="tvSeries" name="mtypes" value="tvSeries">tvSeries
+		<input type="checkbox" id="knuOriginal" name="mtypes" value="knuOriginal">knuOriginal
+	</div>
+	<br>
+	장르
+	<div>
+		<input type="checkbox" id="Action" name="genres" value="Action">Action	
+		<input type="checkbox" id="Comedy" name="genres" value="Comedy">Comedy
+		<input type="checkbox" id="Romance" name="genres" value="Romance">Romance
+		<input type="checkbox" id="Thiller" name="genres" value="Thiller">Thiller
+		<input type="checkbox" id="Sci-Fi" name="genres" value="Sci-Fi">Sci-Fi
+		<input type="checkbox" id="Fantasy" name="genres" value="Fantasy">Fantasy
+	</div>
+	<br>
+	버전
+	<div>
+		<input type="checkbox" id="UA" name="versions" value="UA">UA	
+		<input type="checkbox" id="DE" name="versions" value="DE">DE
+		<input type="checkbox" id="KR" name="versions" value="KR">KR
+		<input type="checkbox" id="ES" name="versions" value="ES">ES
+		<input type="checkbox" id="FR" name="versions" value="FR">FR
+	</div>
+	
+	<br>
+	추천영상
+	
+</form>
+
+</body>
+</html>
