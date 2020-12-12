@@ -7,6 +7,7 @@ public class MyPage {
 	public static Scanner sc = new Scanner(System.in);
 
 	/* return false if logout, return true else */
+	
 	public static boolean display(Connection conn, Statement stmt, User user) {
 		while (true) {
 			System.out.println("원하는 기능을 선택하세요.");

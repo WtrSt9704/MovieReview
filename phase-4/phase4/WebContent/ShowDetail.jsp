@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <%
-
 		String serverIP = "localhost";
 		String strSID = "xe";
 		String portNum = "5059";
