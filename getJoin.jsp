@@ -73,19 +73,19 @@
 		
 		try{
 			res=stmt.executeUpdate(sql);
-		/*	PrintWriter script = response.getWriter();
+			conn.commit();
+			session.setAttribute("userID", id);
 
-			script.println("<script>");
+			PrintWriter script = response.getWriter();
+
+		    script.println("<script>");
 
 			script.println("location.href='favorite.jsp'");
 
 			script.println("</script>");
 
-			script.close();*/
+			script.close();
 			
-			conn.commit();
-			
-			response.sendRedirect("favorite.jsp?userID="+id);
 
 		
 		}catch (SQLException e) {
@@ -101,9 +101,6 @@
 
 			script.close();
 		}
-		
-
-
 		
 		 %>
 </body>
