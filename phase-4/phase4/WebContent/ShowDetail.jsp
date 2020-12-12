@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
         <%@ page language="java" import="java.text.*, java.sql.*"%>
         <%@ page language="java" import= "java.util.Date"%>
+        <%@ page language="java" import= "km.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +10,11 @@
 <title>Insert title here</title>
 </head>
 <%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "5059";
-		String user = "moviedb";
-		String pass = "oracle";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-
 		Connection conn = null;
 		PreparedStatement pstmt;
 		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url,user,pass);
+
+		conn = Util.makeConnection();
 
 		String sql;
 		ResultSetMetaData rsmd;
@@ -29,12 +23,24 @@
 		String id = request.getParameter("movieID");
 		String Acc;
 		
+		
 		Acc = "Admin";
 		//Acc = request.getParameter("UserID");
 		//id = "123";
 		%>
 		
+	<script type="text/javascript">
 
+	function modi()
+	{
+		var x = document.getElementById("Rating11");
+   		x.style.visibility =  "visible";
+   		var y = document.getElementById("stars");
+   		y.style.visibility =  "visible";
+	}
+
+
+</script>
 <body>
 	<%
 	sql = "select Title, mType, runtime, Start_year, Num_of_votes, Director, "
@@ -42,6 +48,7 @@
 	
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
+	
 	
 	String ans1;
 	String ans2;
@@ -92,7 +99,8 @@
 	if(Acc.equals("Admin"))
 	{
 		out.println("<h3>정보를 수정하시겠습니까?</h3>");
-		out.println("<form action='modifyMovie.jsp'>");
+		out.println("<form action='ModifyMovieInfo.jsp' method='GET'>");
+		out.println("<input type='hidden' value='" + id + "' name='movieID'/>");
 		out.println("<input type='submit' value='수정하기' id = 'stars'/>");
 		out.println("<input type='button' id = 'goBack' value = '이전 단계로'/>");
 		out.println("</form>");
@@ -101,27 +109,14 @@
 	{
 		out.println("<h3>평점을 매기시겠습니까?</h3>");
 		out.println("<input type='button' id = 'goToRating' onclick='modi()' value='점수매기기'/>");
-		out.println("<input type='button' id = 'goBack' onclick='onClickGoBackHandler()' value = '이전 단계로'/>");
-		out.println("<form action='RatingProcess.jsp'>");
+		out.println("<input type='button' id = 'goBack' value = '이전 단계로'/>");
+		out.println("<form action='RatingProcess.jsp' method='POST'>");
 		out.println("<input type='text' id = 'Rating11' name = 'Rating11' style='visibility: hidden'>");
 		out.println("<input type='submit' value='평점 남기기' id = 'stars' style='visibility: hidden'/>");
 		out.println("</form>");
 	}
 	%>
 	
-<script type="text/javascript">
-	function onClickGoBackHandler() {
-		document.location.href = "\LandingPage.html";
-	}
-	function modi()
-	{
-		var x = document.getElementById("Rating11");
-   		x.style.visibility =  "visible";
-   		var y = document.getElementById("stars");
-   		y.style.visibility =  "visible";
-	}
 
-
-</script>
 </body>
 </html>

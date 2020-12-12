@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
-<%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@ page language="java" import="java.text.*, java.sql.*, km.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,22 +9,16 @@
 </head>
 <body>
 	<%
-		String serverIP = "localhost";
-	String strSID = "xe";
-	String portNum = "5059";
-	String user = "moviedb";
-	String pass = "oracle";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-
+	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, user, pass);
+
+	conn = Util.makeConnection();
 	%>
 
 	<%
-		String phone_number = request.getParameter("phone_number");
+	String phone_number = request.getParameter("phone_number");
 	String name = request.getParameter("name");
 	String membership = request.getParameter("membership");
 	String job = request.getParameter("job");

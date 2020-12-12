@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page language="java" import="java.text.*, java.sql.*"%>
-<%@ page language="java" import="km.SearchingPage"%>
-<%@ page language="java" import="km.Util"%>
-<%@ page language="java" import="km.User"%>
+<%@ page language="java" import="km.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,28 +12,21 @@
 </head>
 <body>
 <%
-	String serverIP = "localhost";
-	String strSID = "xe";
-	String portNum = "5059";
-	String user = "moviedb";
-	String pass = "oracle";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, user, pass);
+	conn = Util.makeConnection();
 %>
 	<h4>------------ Result ----------</h4>
 <%
-	User account = new User("jngds2", "123124");
 	String title = request.getParameter("search_data");
 	String[] types = request.getParameterValues("mtypes");
 	String[] genres = request.getParameterValues("genres");
 	String[] versions = request.getParameterValues("versions");
-	
-	String sql = SearchingPage.retrieve(conn, account, title, types, genres, versions, false);
+	String account_id = request.getParameter("account_id");
+	String account_pw = request.getParameter("account_pw");
+
+	String sql = SearchingPage.makeQueryForRetrieve(conn, account_id, title, types, genres, versions, false);
 	
 	int cnt = 0;
 	try {
@@ -86,6 +77,7 @@
 <script type="text/javascript">
 	function onClickHandler(movieID) {
 		document.location.href = "ShowDetail.jsp?movieID=" + movieID;
+		
 	}
 	
 	function changeColor(obj, oldColor, newColor) {
