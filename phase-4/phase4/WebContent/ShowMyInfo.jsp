@@ -38,7 +38,7 @@ td {
 	String membership = null;
 	String job = null;
 	String address = null;
-	String birtdday = null;
+	String birthday = null;
 	String password = null;
 	String id = null;
 	try {
@@ -50,7 +50,7 @@ td {
 			membership = rs.getString(3);
 			job = rs.getString(4);
 			address = rs.getString(5);
-			birtdday = rs.getString(6);
+			birthday = rs.getString(6);
 			password = rs.getString(7);
 			id = rs.getString(8);
 		}
@@ -100,7 +100,7 @@ td {
 	</tr>
 	<tr>
 		<td>birtdday</td>
-		<td><input type="date" name="birtdday" value="<%=birtdday != null? birtdday.split(" ")[0] : ""%>"></td>
+		<td><input type="date" name="birthday" value="<%=birthday != null? birthday.split(" ")[0] : ""%>"></td>
 	</tr>
 </table>
 

@@ -42,11 +42,38 @@
 
 	try {
 		pstmt.setString(1, phone_number);
-		pstmt.setString(2, name);
-		pstmt.setInt(3, Integer.parseInt(membership));
-		pstmt.setString(4, job);
-		pstmt.setString(5, address);
-		pstmt.setDate(6, java.sql.Date.valueOf(birthday));
+		
+		if (name == "") {
+			pstmt.setNull(2, Types.VARCHAR);
+		} else {
+			pstmt.setString(2, name);
+		}
+		
+		
+		if (membership == "") {
+			pstmt.setNull(3, Types.INTEGER);
+		} else {
+			pstmt.setInt(3, Integer.parseInt(membership));
+		}
+		
+		if (job == "") {
+			pstmt.setNull(4, Types.INTEGER);
+		} else {
+			pstmt.setString(4, job);
+		}	
+		
+		if (address == "") {
+			pstmt.setNull(5, Types.VARCHAR);
+		} else {
+			pstmt.setString(5, address);
+		}	
+		
+		if (birthday == "") {
+			pstmt.setNull(6, Types.DATE);
+		} else {
+			pstmt.setDate(6, java.sql.Date.valueOf(birthday));
+		}	
+		
 		pstmt.setString(7, "wewew2");
 
 		pstmt.executeUpdate();

@@ -49,6 +49,7 @@
 		pstmt.setString(3, mtype);
 		pstmt.setInt(4, Integer.parseInt(runtime));
 		pstmt.setDate(5, java.sql.Date.valueOf(start_year));
+		
 		if (end_year == "") {
 			pstmt.setNull(6, Types.DATE);
 		} else {
