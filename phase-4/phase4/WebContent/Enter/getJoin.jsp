@@ -1,28 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!--  import JDBC package -->    
-<%@ page language="java" import="java.text.*, java.sql.*,java.io.PrintWriter" %>
+<%@ page language="java" import="java.text.*, java.sql.*,java.io.PrintWriter, km.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%
-		String serverIP = "localhost";
-		String strSID="orcl";
-		String portNum = "1521";
-		String user = "knumovie";
-		String pass = "comp322";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	
-		
 		Connection conn = null;
 		Statement stmt = null;
-	
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url,user,pass);
+
+		conn = Util.makeConnection();
 		stmt = conn.createStatement();
 		conn.setAutoCommit(false);
 		
@@ -55,6 +46,40 @@
 		
 		int res;
 		String sql;
+		ResultSet rs;
+		PreparedStatement pstmt;
+
+		sql = "SELECT ID FROM ACCOUNT WHERE ACCOUNT.ID ='"+id+"'";
+		pstmt = conn.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		if(rs.next())
+		{
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+
+			script.println("alert('회원가입 실패 : id 중복');");
+
+			script.println("history.back();");
+
+			script.println("</script>");
+		}
+		
+		sql = "SELECT PHONE_NUMBER FROM ACCOUNT WHERE ACCOUNT.PHONE_NUMBER ='"+phonenumber+"'";
+		pstmt = conn.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		if(rs.next())
+		{
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+
+			script.println("alert('회원가입 실패 : 전화번호 중복');");
+
+			script.println("history.back();");
+
+			script.println("</script>");
+		}
+		
+		
 		
 		
 		System.out.println(gender);
@@ -93,7 +118,7 @@
 
 			script.println("<script>");
 
-			script.println("alert('ȸ������ ���� : �ʼ��� �Է��Ͻÿ�');");
+			script.println("alert('회원가입 실패 : 필수값 입력하시오');");
 
 			script.println("history.back();");
 

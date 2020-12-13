@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page language="java" import="java.text.*, java.sql.*,java.io.PrintWriter" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.text.*, java.sql.*,java.io.PrintWriter, km.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,20 +14,10 @@ String genre = request.getParameter("genre");
 int runtime = Integer.valueOf(request.getParameter("runtime"));
 String userID = (String)session.getAttribute("userID");
 
-String serverIP = "localhost";
-String strSID="orcl";
-String portNum = "1521";
-String user = "knumovie";
-String pass = "comp322";
-String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-
-
 Connection conn = null;
 Statement stmt = null;
 
-
-Class.forName("oracle.jdbc.driver.OracleDriver");
-conn = DriverManager.getConnection(url,user,pass);
+conn = Util.makeConnection();
 stmt = conn.createStatement();
 conn.setAutoCommit(false);
 
@@ -38,7 +28,7 @@ PrintWriter script = response.getWriter();
 conn.commit();
 session.invalidate(); 
 script.println("<script>");
-
+script.println("alert('Fill in your id and password used to sign up')");
 script.println("location.href='login.html'");
 
 script.println("</script>");

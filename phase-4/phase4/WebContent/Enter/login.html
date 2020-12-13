@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>KNU-Movie: Login</title>
 </head>
+
+<style>
+.box {
+    display: table;
+    margin: auto;
+
+}
+</style>
 <body>
-<h2>Sign in</h2>
-<h4>Get and POST Methods to Read Form Data</h4>
-<form action = "getLogin.jsp" method = "POST">
-<!-- Practice for Input Form -->
-<h4>Provide your ID/PW</h4>
-ID: <input type = "text" name ="ID">
-<br />
-PW: <input type = "text" name ="PW">
-<br />
-<br />
-<input type = "submit" value ="Submit"/>
-</form>
-<button type="button" onclick="location.href='join.jsp' ">회원가입</button>
+
+<div class="box">
+	<h2 style="text-align: center;">Sign in</h2>
+	
+	<form action = "getLogin.jsp" method = "POST">
+	<!-- Practice for Input Form -->
+	<table>
+		<tr>
+			<td>ID</td>
+			<td><input type = "text" name ="ID"></td>
+		</tr>
+		<tr>
+			<td>PW</td>
+			<td><input type = "password" name ="PW"></td>
+		</tr>
+	</table>
+	 
+	<br />
+	<br />
+	<div class="box">
+		<input type = "submit" value ="Log in"/> <button type="button" onclick="location.href='/phase4/enter/join.jsp' ">Sing up</button>
+	</div>
+	
+	</form>
+	
+</div>
+
 </body>
 </html>

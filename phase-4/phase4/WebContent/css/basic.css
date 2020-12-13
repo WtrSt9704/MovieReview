@@ -1,0 +1,9 @@
+td {
+	text-align:left;
+	padding: 10px;
+}
+.box {
+    display: table;
+    margin: auto;
+
+}

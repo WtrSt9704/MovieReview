@@ -1,42 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 
 <title>KNU-Movie: join</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css">
+
 </head>
 <body>
+
+
+<div class=box>
 <form action = "getJoin.jsp" method = "POST">
 <!-- Practice for Input Form -->
-<h4>Provide your ID/PW</h4>
-ID(*): <input type = "text" name ="ID">
-<br />
-PW(*): <input type = "text" name ="PW">
-<br />
-Phone(*): <input type = "text" name ="phonenumber">
-<br />
-name: <input type = "text" name ="name">
-<br />
-Membership(*):
-<input type = "checkbox" name = "membership" value = "0"/>basic
-<input type = "checkbox" name = "membership" value = "1"/>premium
-<input type = "checkbox" name = "membership" value = "2"/>prime
-<br />
-Gender:
-<input type = "checkbox" name = "gender" value = "M"/>Male
-<input type = "checkbox" name = "gender" value = "F"/>Female
-<br />
-Birthday(yyyy-mm-dd):<input type = "text" name ="birthday">
-<br />
-Job:<input type = "text" name ="job">
-<br />
-Address:<input type = "text" name ="address">
-<br />
-<input type = "submit" value ="Submit"/>
-<input type="button" name="cancel" value="취소" onClick="location.href='login.html'">
+<h1>Sign up</h1>
+
+<table>
+	<tr>
+		<td>ID(*)</td>
+		<td><input type = "text" name ="ID"></td>
+	</tr>
+	<tr>
+		<td>PW(*)</td>
+		<td><input type = "password" name ="PW"></td>
+	</tr>
+	<tr>
+		<td>Phone(*)</td>
+		<td><input type = "text" name ="phonenumber"></td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td><input type = "text" name ="ID"></td>
+	</tr>
+	<tr>
+		<td>Membership(*)</td>
+		<td><input type = "radio" name = "membership" value = "0" checked = "checked"/>basic
+			<input type = "radio" name = "membership" value = "1"/>premium
+			<input type = "radio" name = "membership" value = "2" />prime</td>
+	</tr>
+	<tr>
+		<td>Gender</td>
+		<td><input type = "radio" name = "gender" value = "M"/>Male
+			<input type = "radio" name = "gender" value = "F"/>Female</td>
+	</tr>
+	<tr>
+		<td>Birthday(yyyy-mm-dd)</td>
+		<td><input type = "text" name ="birthday"></td>
+	</tr>
+	<tr>
+		<td>Job</td>
+		<td><input type = "text" name ="job"></td>
+	</tr>
+	<tr>
+		<td>Address</td>
+		<td><input type = "text" name ="address"></td>
+	</tr>
+	<tr>
+		<td><input type = "submit" value ="Submit"/></td>
+		<td><input type="button" name="cancel" value="Back" onClick="location.href='login.html'"></td>
+	</tr>
+	
+
+</table>
+
+<div class="box">
+
+</div>
+
 </form>
+</div>
+
 
 </body>
 </html>
