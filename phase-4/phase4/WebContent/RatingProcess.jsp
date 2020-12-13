@@ -47,8 +47,15 @@
 		ResultSet rs;
 		
 		conn = Util.makeConnection();
-
 		String sql;
+		
+		/* start transaction */
+		conn.setAutoCommit(false);
+		sql = "set transaction isolation level serializable name " + "'" + userID + "'";
+		pstmt = conn.prepareStatement(sql);
+		
+		
+		
 		ResultSetMetaData rsmd;
 		Statement stmt = null;
 		int cnt;
@@ -61,59 +68,65 @@
 <body>
 <%
 
-//UserID = request.getParameter("USerID");
-//Mid = request.getParameter("id");
-
-String RatingPoint = request.getParameter("Rating11");
-//out.println(RatingPoint);
-
-sql = "select * from rating where Account_id = '"+userID+"' and movie_id = "+Mid;
-out.println("<br/>"+sql);
-pstmt = conn.prepareStatement(sql);
-rs = pstmt.executeQuery();
-//out.println(rs.next());
-
-if(rs.next() == true)
-{
 	
-	//exist
-	sql = "update rating set stars = "+RatingPoint+" where Account_id = '"+userID+"'";
+	
+	String RatingPoint = request.getParameter("Rating11");
+
+	
+	sql = "select * from rating where Account_id = '"+userID+"' and movie_id = "+Mid;
+	out.println("<br/>"+sql);
 	pstmt = conn.prepareStatement(sql);
-	res = pstmt.executeUpdate();
-	//out.println(sql);
+	rs = pstmt.executeQuery();
+
 	
-	if(res != 0)
+	if(rs.next() == true)
 	{
-		out.println("<script>alert('success to update')</script>");
-	}
-	
-}
-	else
-	{
-		sql = "select max(Rating_id) from rating";
-		rs = pstmt.executeQuery(sql);
-		rs.next();
-		int maxNum = rs.getInt(1)+1;
-		//out.println("<br/>"+maxNum);
-		sql = "insert into rating values (" + maxNum + ", '" + userID + "', " + RatingPoint + ", " + Mid+")";
+		
+		//exist
+		sql = "update rating set stars = "+RatingPoint+" where Account_id = '"+userID+"'";
 		pstmt = conn.prepareStatement(sql);
-		//out.println("<br/>"+sql);
-		//out.println(sql);
 		res = pstmt.executeUpdate();
-		//out.println(res);
+		//out.println(sql);
 		
 		if(res != 0)
 		{
-			out.println("<script>alert('success to insertion')</script>");
-		}
-		else
-		{
-			out.println("<script>alert('fail to insertion')</script>");
+			out.println("<script>alert('success to update')</script>");
 		}
 		
 	}
+		else
+		{
+			sql = "select max(Rating_id) from rating";
+			rs = pstmt.executeQuery(sql);
+			rs.next();
+			int maxNum = rs.getInt(1)+1;
+			//out.println("<br/>"+maxNum);
+			sql = "insert into rating values (" + maxNum + ", '" + userID + "', " + RatingPoint + ", " + Mid+")";
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			res = pstmt.executeUpdate();
+			
+			
+			/* transaction end */
+			conn.commit();
+			
+			pstmt.close();
+			
+			if(res != 0)
+			{
+				out.println("<script>alert('success to insertion'); </script>");
+			}
+			else
+			{
+				out.println("<script>alert('fail to insertion')</script>");
+			}
+			
+			
+		}
 
-	%>	
+
+%>	
 
 </body>
 </html>

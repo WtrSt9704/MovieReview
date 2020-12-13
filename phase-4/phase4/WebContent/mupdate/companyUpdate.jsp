@@ -16,7 +16,8 @@
 		PreparedStatement pstmt;
 		ResultSet rs;
 		conn = Util.makeConnection();
-
+		conn.setTransactionIsolation(2);
+		
 		String sql;
 		String blank = "";
 		ResultSetMetaData rsmd;

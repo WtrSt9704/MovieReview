@@ -58,7 +58,7 @@
         <a class="nav-link" href="LandingPage.jsp">Search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="MyPage.html">MyPage</a>
+        <a class="nav-link" href="MyPage.jsp">MyPage</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Logout.jsp">Logout</a>
@@ -68,7 +68,7 @@
 </nav>
 <%
 
-		sql = "select MOVIE.Title, RATING.STARS FROM MOVIE, RATING WHERE RATING.ACCOUNT_ID = '"+UserID+ "' and rating.movie_id = movie.id";
+		sql = "select MOVIE.Title, RATING.STARS FROM MOVIE, RATING WHERE RATING.ACCOUNT_ID = '"+userID+ "' and rating.movie_id = movie.id";
 		//out.println(sql);
 		
 		pstmt = conn.prepareStatement(sql);
