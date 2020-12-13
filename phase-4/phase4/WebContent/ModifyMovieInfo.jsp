@@ -67,7 +67,12 @@
 %>
 <h2>수정할 목록을 선택해 주세요</h2>
 
-<%
+<%	
+	conn.setAutoCommit(false);
+	sql = "set transaction name '" + userID + "'"; // transaction
+	pstmt = conn.prepareStatement(sql);
+	pstmt.execute();
+	
 	sql = "select title, mtype, runtime, start_year, end_year," +
 			"num_of_votes, director, writer, company, descriptions from movie where id = "+movieID;
 	pstmt = conn.prepareStatement(sql);

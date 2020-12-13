@@ -131,7 +131,7 @@
 		out.println("<br/>"+ans10);
 	}
 	
-	if(Acc.equals("Admin"))
+	if((int)session.getAttribute("membership_grade") == 3)
 	{
 		out.println("<h3>정보를 수정하시겠습니까?</h3>");
 		out.println("<form action='ModifyMovieInfo.jsp' method='GET'>");
@@ -146,6 +146,7 @@
 		out.println("<input type='button' id = 'goToRating' onclick='modi()' value='점수매기기'/>");
 		out.println("<input type='button' id = 'goBack' value = '이전 단계로'/>");
 		out.println("<form action='RatingProcess.jsp' method='POST'>");
+		out.println("<input type='hidden' value='" + id + "' name='movieID'/>");
 		out.println("<input type='text' id = 'Rating11' name = 'Rating11' style='visibility: hidden'>");
 		out.println("<input type='submit' value='평점 남기기' id = 'stars' style='visibility: hidden'/>");
 		out.println("</form>");

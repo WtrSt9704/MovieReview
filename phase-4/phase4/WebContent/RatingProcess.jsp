@@ -55,9 +55,8 @@
 		int res;
 		
 		//test
-		String UserID ="afa11v" ;
-		String Mid = "123";
-		String RatingPoint = "12" ;		
+		String Mid = request.getParameter("movieID");
+		
 		%>
 <body>
 <%
@@ -65,10 +64,10 @@
 //UserID = request.getParameter("USerID");
 //Mid = request.getParameter("id");
 
-RatingPoint = request.getParameter("Rating11");
+String RatingPoint = request.getParameter("Rating11");
 //out.println(RatingPoint);
 
-sql = "select * from rating where Account_id = '"+UserID+"' and movie_id = "+Mid;
+sql = "select * from rating where Account_id = '"+userID+"' and movie_id = "+Mid;
 out.println("<br/>"+sql);
 pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
@@ -78,7 +77,7 @@ if(rs.next() == true)
 {
 	
 	//exist
-	sql = "update rating set stars = "+RatingPoint+" where Account_id = '"+UserID+"'";
+	sql = "update rating set stars = "+RatingPoint+" where Account_id = '"+userID+"'";
 	pstmt = conn.prepareStatement(sql);
 	res = pstmt.executeUpdate();
 	//out.println(sql);
@@ -96,7 +95,7 @@ if(rs.next() == true)
 		rs.next();
 		int maxNum = rs.getInt(1)+1;
 		//out.println("<br/>"+maxNum);
-		sql = "insert into rating values (" + maxNum + ", '" + UserID + "', " + RatingPoint + ", " + Mid+")";
+		sql = "insert into rating values (" + maxNum + ", '" + userID + "', " + RatingPoint + ", " + Mid+")";
 		pstmt = conn.prepareStatement(sql);
 		//out.println("<br/>"+sql);
 		//out.println(sql);
