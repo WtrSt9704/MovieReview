@@ -1,7 +1,0 @@
-CREATE TABLE ACCOUNT_FAVORITE(
-ID VARCHAR(25),
-Mtype VARCHAR(25),
-Genre VARCHAR(25),
-Runtime Number,
-Primary key(ID)
-)

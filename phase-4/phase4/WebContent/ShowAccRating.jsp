@@ -6,8 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./css/basic.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>My Rating</title>
+<center><title>My Rating</title></center>
 		<%-- DB conn --%>
 		<%
 
@@ -70,8 +73,8 @@
 		
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
-
-		out.println("<h3>-----Rating-----</h3>");
+		out.println("<div class='box'>");
+		out.println("<center><h3>Rating</h3></center>");
 		out.println("<table border = \"1\">");
 		out.println("<th>id</th>");
 		out.println("<th>Title</th>");
@@ -85,13 +88,16 @@
 			out.println("<td>"+rs.getString(2)+"</td>");
 			out.println("</tr>");
 			cnt++;
+			
 		}
+		
 		out.println("</table>");
+		out.println("</div>");
 		
 		
 %>
 <%--back 버튼 --%>
-<input type="button" name = "Back" onclick="location.href='menu.jsp'" value="goBack">
+<%-- <input type="button" name = "Back" onclick="location.href='menu.jsp'" value="goBack">--%>
 				
 </body>
 </html>

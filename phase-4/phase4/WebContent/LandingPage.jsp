@@ -8,6 +8,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +43,6 @@
 </nav>
 
 <form action="SearchResult.jsp" method="POST">
-	<input type="hidden" name="account_id" value="wewew2"/>
-	<input type="hidden" name="account_pw" value="996052"/>
 	
 	<div class="box" >
 		<div class="form-inline my-14 my-lg-0">

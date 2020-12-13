@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/basic.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
@@ -51,6 +52,7 @@
 	ResultSet rs = null;
 	conn = Util.makeConnection();
 %>
+<div class="box">
 	<h4>------------ Result ----------</h4>
 <%
 	String title = request.getParameter("search_data");
@@ -84,6 +86,7 @@
 			out.println("<td>" + rs.getString(3) + "</td>");
 			out.println("<td>" + rs.getString(4) + "</td>");
 			out.println("</tr>");
+			
 		
 		}
 		out.println("</table>");
@@ -98,7 +101,7 @@
 	}
 
 %>
-
+</div>
 <%
 	if (rs != null)
 		rs.close();

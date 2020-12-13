@@ -16,6 +16,8 @@ td {
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="./css/basic.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,7 +29,7 @@ td {
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
 <%
-	String userID = (String)session.getAttribute("userID");
+	
 	int membershipp =(int)session.getAttribute("membership_grade");
 	
 	if(membershipp == 3)  {
@@ -57,9 +59,8 @@ td {
 	ResultSet rs = null;
 	conn = Util.makeConnection();
 
-	/* User account = new User("jngds2", "123124"); */
-		/* phone_number,name,membership,job,address,birtdday */
-	String sql = "select phone_number, name, membership_grade, job, address, birtdday, password, id from account where id = " + "'wewew2'";
+	String userID = (String)session.getAttribute("userID");
+	String sql = "select phone_number, name, membership_grade, job, address, birtdday, password, id from account where id = " + "'" + userID + "'";
 	
 	int cnt = 0;
 	try {
@@ -102,46 +103,49 @@ td {
 %>
 
 
+
 <form action="ModifyMyInfo.jsp" action="POST">
-<h1> My Information </h1>
-<table >
-	<tr>
-		<td>ID</td>
-		<td><input type="text" name="id" value="<%=id == null? "":id%>" disabled /> </td>
-	</tr>
-	<tr>
-		<td>Password</td>
-		<td><input type="text" name="password" value="<%=password == null? "":password%>" required/> </td>
-	</tr>
-	<tr>
-		<td>Phone number</td>
-		<td><input type="text" name="phone_number" value="<%=phone_number == null? "":phone_number%>" required></td>
-	</tr>
-	<tr>
-		<td>Name</td>
-		<td><input type="text" name="name" value="<%=name == null?"":name%>"></td>
-	</tr>
-	<tr>
-		<td>Membership(between 0 and 3)</td>
-		<td><input type="number" name="membership" onchange="handleChange(tdis)" min="0" max="3" value="<%=membership == null?"":membership%>" required></td>
-	</tr>
-	<tr>
-		<td>Job</td>
-		<td><input type="text" name="job" value="<%=job == null? "":job%>"></td>
-	</tr>
-	<tr>
-		<td>Address</td>
-		<td><input type="text" name="address" value="<%=address == null? "":address%>"></td>
-	</tr>
-	<tr>
-		<td>birtdday</td>
-		<td><input type="date" name="birthday" value="<%=birthday != null? birthday.split(" ")[0] : ""%>"></td>
-	</tr>
-</table>
+<div class="box">
+	<h1> My Information </h1>
+	<table >
+		<tr>
+			<td>ID</td>
+			<td><input type="text" name="id" value="<%=id == null? "":id%>" disabled /> </td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="text" name="password" value="<%=password == null? "":password%>" required/> </td>
+		</tr>
+		<tr>
+			<td>Phone number</td>
+			<td><input type="text" name="phone_number" value="<%=phone_number == null? "":phone_number%>" required></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="name" value="<%=name == null?"":name%>"></td>
+		</tr>
+		<tr>
+			<td>Membership(between 0 and 3)</td>
+			<td><input type="number" name="membership" onchange="handleChange(tdis)" min="0" max="3" value="<%=membership == null?"":membership%>" required></td>
+		</tr>
+		<tr>
+			<td>Job</td>
+			<td><input type="text" name="job" value="<%=job == null? "":job%>"></td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td><input type="text" name="address" value="<%=address == null? "":address%>"></td>
+		</tr>
+		<tr>
+			<td>birthday</td>
+			<td><input type="date" name="birthday" value="<%=birthday != null? birthday.split(" ")[0] : ""%>"></td>
+		</tr>
+	</table>
+	<center><input type="submit" value="Modify"/></center>
+</div>
 
 
 
-<input type="submit" value="Modify"/>
 </form>
 
 <script type="text/javascript">
