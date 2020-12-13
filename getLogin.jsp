@@ -7,6 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>KNU-Movie: Login</title>
+
 </head>
 <body>
 
@@ -27,6 +28,7 @@
 		
 		String id = request.getParameter("ID");
 		String password = request.getParameter("PW");
+		int membership=0;
 		
 		String query = "SELECT ID,PASSWORD,MEMBERSHIP_GRADE FROM ACCOUNT WHERE ACCOUNT.ID ='"+id+"' AND ACCOUNT.PASSWORD ='"+password+"'";
 		//System.out.println(query);
@@ -36,6 +38,7 @@
 		if(rs.next())
 		{
 			result =1;
+			membership = rs.getInt("MEMBERSHIP_GRADE");
 		}
 		else{
 			result =0;
@@ -44,12 +47,13 @@
 		if(result==1)
 		{
 			session.setAttribute("userID", id);
-
+			session.setAttribute("membership_grade", membership);
+			
 			PrintWriter script = response.getWriter();
 
 			script.println("<script>");
 
-			script.println("location.href='LandingPage.jsp'");
+			script.println("location.href='MyPage.jsp'");
 
 			script.println("</script>");
 

@@ -55,6 +55,40 @@
 		
 		int res;
 		String sql;
+		ResultSet rs;
+		PreparedStatement pstmt;
+
+		sql = "SELECT ID FROM ACCOUNT WHERE ACCOUNT.ID ='"+id+"'";
+		pstmt = conn.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		if(rs.next())
+		{
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+
+			script.println("alert('회원가입 실패 : id 중복');");
+
+			script.println("history.back();");
+
+			script.println("</script>");
+		}
+		
+		sql = "SELECT PHONE_NUMBER FROM ACCOUNT WHERE ACCOUNT.PHONE_NUMBER ='"+phonenumber+"'";
+		pstmt = conn.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		if(rs.next())
+		{
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+
+			script.println("alert('회원가입 실패 : 전화번호 중복');");
+
+			script.println("history.back();");
+
+			script.println("</script>");
+		}
+		
+		
 		
 		
 		System.out.println(gender);

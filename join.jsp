@@ -6,8 +6,12 @@
 <meta charset="EUC-KR">
 
 <title>KNU-Movie: join</title>
+
+
 </head>
 <body>
+
+
 <form action = "getJoin.jsp" method = "POST">
 <!-- Practice for Input Form -->
 <h4>Provide your ID/PW</h4>
@@ -20,13 +24,13 @@ Phone(*): <input type = "text" name ="phonenumber">
 name: <input type = "text" name ="name">
 <br />
 Membership(*):
-<input type = "checkbox" name = "membership" value = "0"/>basic
-<input type = "checkbox" name = "membership" value = "1"/>premium
-<input type = "checkbox" name = "membership" value = "2"/>prime
+<input type = "radio" name = "membership" value = "0" checked = "checked"/>basic
+<input type = "radio" name = "membership" value = "1"/>premium
+<input type = "radio" name = "membership" value = "2" />prime
 <br />
 Gender:
-<input type = "checkbox" name = "gender" value = "M"/>Male
-<input type = "checkbox" name = "gender" value = "F"/>Female
+<input type = "radio" name = "gender" value = "M"/>Male
+<input type = "radio" name = "gender" value = "F"/>Female
 <br />
 Birthday(yyyy-mm-dd):<input type = "text" name ="birthday">
 <br />
