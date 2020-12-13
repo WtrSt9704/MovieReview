@@ -1,14 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page language="java" import="java.text.*, java.sql.*, km.*"%>
+    <%@ page language="java" import="java.text.*, java.sql.*"%>
+    <%@ page language="java" import="km.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/basic.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
+
+<style>
+td {
+	text-align:center;
+}
+</style>
+
+
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,80 +52,38 @@
     </ul>
   </div>
 </nav>
-<%
-		Connection conn = null;
-		PreparedStatement pstmt;
-		ResultSet rs;
-		
-		conn = Util.makeConnection();
 
-		String sql;
-		ResultSetMetaData rsmd;
-		Statement stmt = null;
-		int cnt;
-		int res;
-		
-		//test
-		String UserID ="afa11v" ;
-		String Mid = "123";
-		String RatingPoint = "12" ;		
-		%>
-<body>
-<%
 
-//UserID = request.getParameter("USerID");
-//Mid = request.getParameter("id");
+<div class="box">
 
-RatingPoint = request.getParameter("Rating11");
-//out.println(RatingPoint);
+<table>
+<tr>
+	<td>
+		<h1>My Page</h1>
+	</td>
+</tr>
+<tr>
+	<td>
+		<h3> <a href="ShowMyInfo.jsp">My Information</a></h3>
+	</td>
+</tr>
+<tr>
+	<td>
+		<h3> <a href="ShowAccRating.jsp">My evaluating</a></h3>
+</td>
+</tr>
+<tr>
+	<td>
+	<h3> <a href="DeleteAccount.jsp">Delete Account</a></h3>
+	</td>
+</tr>
 
-sql = "select * from rating where Account_id = '"+UserID+"' and movie_id = "+Mid;
-out.println("<br/>"+sql);
-pstmt = conn.prepareStatement(sql);
-rs = pstmt.executeQuery();
-//out.println(rs.next());
+</table>
+</div>
 
-if(rs.next() == true)
-{
-	
-	//exist
-	sql = "update rating set stars = "+RatingPoint+" where Account_id = '"+UserID+"'";
-	pstmt = conn.prepareStatement(sql);
-	res = pstmt.executeUpdate();
-	//out.println(sql);
-	
-	if(res != 0)
-	{
-		out.println("<script>alert('success to update')</script>");
-	}
-	
-}
-	else
-	{
-		sql = "select max(Rating_id) from rating";
-		rs = pstmt.executeQuery(sql);
-		rs.next();
-		int maxNum = rs.getInt(1)+1;
-		//out.println("<br/>"+maxNum);
-		sql = "insert into rating values (" + maxNum + ", '" + UserID + "', " + RatingPoint + ", " + Mid+")";
-		pstmt = conn.prepareStatement(sql);
-		//out.println("<br/>"+sql);
-		//out.println(sql);
-		res = pstmt.executeUpdate();
-		//out.println(res);
-		
-		if(res != 0)
-		{
-			out.println("<script>alert('success to insertion')</script>");
-		}
-		else
-		{
-			out.println("<script>alert('fail to insertion')</script>");
-		}
-		
-	}
 
-	%>	
+
+
 
 </body>
 </html>

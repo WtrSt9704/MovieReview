@@ -40,5 +40,6 @@
 </body>
 <script type="text/javascript">
 alert("We completely delete your account");
+window.location.href="/phase4/enter/login.html"
 </script>
 </html>

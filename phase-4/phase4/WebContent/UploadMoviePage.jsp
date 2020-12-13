@@ -8,16 +8,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-td {
-	text-align:left;
-	padding: 10px;
-}
-	
-</style>
+
+<link rel="stylesheet" type="text/css" href="./css/basic.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+<%
+	String userID = (String)session.getAttribute("userID");
+	int membershipp =(int)session.getAttribute("membership_grade");
+	
+	if(membershipp == 3)  {
+%>
+
+        <a class="nav-link" href="UploadMoviePage.jsp">Upload <span class="sr-only">(current)</span></a>
+      </li>
+<%
+		}
+%>
+      <li class="nav-item">
+        <a class="nav-link" href="LandingPage.jsp">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="MyPage.jsp">MyPage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Logout.jsp">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <%
 	
 	Connection conn = null;
@@ -53,67 +83,70 @@ td {
 		e.printStackTrace();
 	}
 %>
-<form action= "UploadMovie.jsp" method="POST">
+<div class="box">
+	<form action= "UploadMovie.jsp" method="POST">
+	
+	<table class="box">
+		<tr>
+			<td>Movie ID<td>
+			<td><input type="text" name="movie_id" value="<%=movie_id%>" readonly /><td>
+		</tr>
+		<tr>
+			<td>Title<td>
+			<td><input type="text" name="title" required/><td>
+		</tr>
+		<tr>
+			<td>Movie type<br> (movie, tvSeries, knuOrigina)<td>
+			<td><input type="text" name="mtype" onChange="handleTypeChange(this)" required/><td> <!-- 유효성 검사 필요 -->
+		</tr>
+		<tr>
+			<td>Runtime<td>
+			<td><input type="number" name="runtime" required/><td>
+		</tr>
+		<tr>
+			<td>Start_year<td>
+			<td><input type="date" name="start_year" required/><td>
+		</tr>
+		<tr>
+			<td>End_year<td>
+			<td><input type="date" name="end_year"/><td>
+		</tr>
+		<tr>
+			<td>Admin ID<td>
+			<td><input type="text" name="admin_id" required/><td>
+		</tr>
+		<tr>
+			<td>Rating<td>
+			<td><input type="number" name="rating" min="0" max="10" onchange="handleRatingChange(this)" /><td>
+		</tr>
+		<tr>
+			<td>Num of votes<td>
+			<td><input type="number" name="votes" value="0"/><td>
+		</tr>
+		<tr>
+			<td>Director<td>
+			<td><input type="text" name="director"/><td>
+		</tr>
+		<tr>
+			<td>Writer<td>
+			<td><input type="text" name="writer"/><td>
+		</tr>
+		<tr>
+			<td>Company<td>
+			<td><input type="text" name="company"/><td>
+		</tr>
+		<tr>
+			<td>Description<td>
+			<td><input type="text" name="description"/><td>
+		</tr>
+	</table>
+	
+	
+	<center><input type="submit" value="Upload"/></center>
+	
+	</form>
+	</div>
 
-<table>
-	<tr>
-		<td>Movie ID<td>
-		<td><input type="text" name="movie_id" value="<%=movie_id%>" readonly /><td>
-	</tr>
-	<tr>
-		<td>Title<td>
-		<td><input type="text" name="title" required/><td>
-	</tr>
-	<tr>
-		<td>Movie type<br> (movie, tvSeries, knuOrigina)<td>
-		<td><input type="text" name="mtype" onChange="handleTypeChange(this)" required/><td> <!-- 유효성 검사 필요 -->
-	</tr>
-	<tr>
-		<td>Runtime<td>
-		<td><input type="number" name="runtime" required/><td>
-	</tr>
-	<tr>
-		<td>Start_year<td>
-		<td><input type="date" name="start_year" required/><td>
-	</tr>
-	<tr>
-		<td>End_year<td>
-		<td><input type="date" name="end_year"/><td>
-	</tr>
-	<tr>
-		<td>Admin ID<td>
-		<td><input type="text" name="admin_id" required/><td>
-	</tr>
-	<tr>
-		<td>Rating<td>
-		<td><input type="number" name="rating" min="0" max="10" onchange="handleRatingChange(this)" /><td>
-	</tr>
-	<tr>
-		<td>Num of votes<td>
-		<td><input type="number" name="votes" value="0"/><td>
-	</tr>
-	<tr>
-		<td>Director<td>
-		<td><input type="text" name="director"/><td>
-	</tr>
-	<tr>
-		<td>Writer<td>
-		<td><input type="text" name="writer"/><td>
-	</tr>
-	<tr>
-		<td>Company<td>
-		<td><input type="text" name="company"/><td>
-	</tr>
-	<tr>
-		<td>Description<td>
-		<td><input type="text" name="description"/><td>
-	</tr>
-</table>
-
-
-<center><input type="submit" value="Upload"/></center>
-
-</form>
 
 <script type="text/javascript">
 	function handleRatingChange(input) {
