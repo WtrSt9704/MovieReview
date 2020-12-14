@@ -77,6 +77,10 @@
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int ccnt = rsmd.getColumnCount();
 		for (int i = 2; i <= ccnt; ++i) {
+			if (i == 3) {
+				out.println("<th>" + "REGIONAL " + rsmd.getColumnName(i) + "</th>");
+				continue;
+			}
 			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 		}
 		while (rs.next()) {
@@ -85,6 +89,7 @@
 			out.println("<td>" + rs.getString(2) + "</td>");
 			out.println("<td>" + rs.getString(3) + "</td>");
 			out.println("<td>" + rs.getString(4) + "</td>");
+			out.println("<td>" + rs.getString(5) + "</td>");
 			out.println("</tr>");
 			
 		

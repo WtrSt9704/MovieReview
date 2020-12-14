@@ -8,7 +8,7 @@ import java.text.*;
 
 public class SearchingPage {
 	public static String makeQueryForRetrieve(Connection conn, String account_id, String stitle, String[] mtypes, String[] genres, String[] versions, boolean isAdmin) {
-		String sql = "select m.id, v.title, m.rating, v.region\r\n" + "from movie m, version v, genre_of go\r\n"
+		String sql = "select distinct m.id, m.title, v.title, m.rating, v.region\r\n" + "from movie m, version v, genre_of go\r\n"
 				+ "where\r\n" + "    v.movie_id = m.id and go.movie_id = m.id ";
 		if (stitle != null) {
 			sql += " and ( (m.title like " + "'%" + stitle + "%')" + " or " + "(v.title like " + "'%" + stitle + "%') )";
