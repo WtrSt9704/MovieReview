@@ -95,6 +95,7 @@
 			"from rating " +
 			"group by movie_id " +
 			"order by ravg DESC";
+
 	try {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.execute(); // make a view for top 5 movie
@@ -107,6 +108,8 @@
 		sql = "select distinct m.id, m.title, m.mtype, t.ravg " +
 				"from avg_rating t, movie m, genre_of g " +
 				"where t.movie_id = m.id and g.movie_id = t.movie_id " +
+				"and not exists ( select r.rating_id  from rating r " +
+				"where r.movie_id = m.id and r.account_id ='" + userID + "') " +
 				"order by ravg desc";
 		
 		pstmt = conn.prepareStatement(sql);
@@ -166,6 +169,8 @@
 				"where t.movie_id = g.movie_id and t.movie_id = m.id and " +
 				"g.GENRE_NAME = f.genre and m.mtype=f.mtype and " +
 				"m.runtime between f.runtime - 20 and f.runtime + 20 " +
+				"and not exists ( select r.rating_id  from rating r " +
+				"where r.movie_id = m.id and r.account_id ='" + userID + "') " +
 				"order by t.ravg desc";
 		
 		pstmt = conn.prepareStatement(sql);

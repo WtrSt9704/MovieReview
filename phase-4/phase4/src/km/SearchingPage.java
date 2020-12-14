@@ -54,7 +54,7 @@ public class SearchingPage {
 		
 		/* except movies rated by user*/
 		sql += "and not exists (\r\n" + "  select r.rating_id\r\n" + "  from rating r\r\n"
-				+ "  where r.movie_id = m.id and r.account_id = " + "'" + account_id + "')";
+				+ "  where r.movie_id = m.id and r.account_id = " + "'" + account_id + "') order by m.title";
 		return sql;
 //		if (Util.printMovie(conn, sql, user) != 0) {
 //			Util.afterList(conn, user, isAdmin);

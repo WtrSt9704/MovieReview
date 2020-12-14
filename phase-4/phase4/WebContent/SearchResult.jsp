@@ -59,10 +59,8 @@
 	String[] types = request.getParameterValues("mtypes");
 	String[] genres = request.getParameterValues("genres");
 	String[] versions = request.getParameterValues("versions");
-	String account_id = request.getParameter("account_id");
-	String account_pw = request.getParameter("account_pw");
 
-	String sql = SearchingPage.makeQueryForRetrieve(conn, account_id, title, types, genres, versions, false);
+	String sql = SearchingPage.makeQueryForRetrieve(conn, userID, title, types, genres, versions, false);
 	
 	int cnt = 0;
 	try {
