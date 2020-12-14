@@ -25,9 +25,9 @@
 	</tr>
 	<tr>
 		<td>Favorite Genre</td>
-		<td><input type = "checkbox" name = "genre" value = "Action"/>tvSeries
-		<input type = "checkbox" name = "genre" value = "Comedy"/>movie
-		<input type = "checkbox" name = "genre" value = "Romance"/>knuOriginal
+		<td><input type = "checkbox" name = "genre" value = "Action"/>Action
+		<input type = "checkbox" name = "genre" value = "Comedy"/>Comedy
+		<input type = "checkbox" name = "genre" value = "Romance"/>Romance
 		<input type = "checkbox" name = "genre" value = "Thiller"/>Thiller
 		<input type = "checkbox" name = "genre" value = "Adventure"/>Adventure
 		<input type = "checkbox" name = "genre" value = "Sci-Fi"/>Sci-fi

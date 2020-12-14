@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="./css/basic.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</head>
+</head>			
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -135,15 +135,68 @@
 	
 %>
 	<hr>
-	<h4>Top 5 recommendations</h4>
+	<h4>Top 5 Recommendations </h4>
+<%
+	/* show top 5 movies */
+	try {
+		sql = "drop view favor";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.execute();	
+	} catch (SQLException ex2) {
+		
+	}
+	
+	
+	try {
+		sql = "create view favor as " +
+				  "select mtype, genre, runtime " +
+				  "from account_favorite " +
+				  "where id =" + "'" + userID + "'";
+		
+		pstmt = conn.prepareStatement(sql);
+	
+		pstmt.execute(); // make a view for top 5 movie
+	} catch (SQLException ex2) {
+		System.err.println("pstmt error = " + ex2.getMessage());
+	}
 
-
+	try {				
+		sql = "select distinct m.id, m.title, m.mtype, t.ravg " +
+				"from avg_rating t, genre_of g, movie m, favor f " +
+				"where t.movie_id = g.movie_id and t.movie_id = m.id and " +
+				"g.GENRE_NAME = f.genre and m.mtype=f.mtype and " +
+				"m.runtime between f.runtime - 20 and f.runtime + 20 " +
+				"order by t.ravg desc";
+		
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		out.println("<table border=\"1\">");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int ccnt = rsmd.getColumnCount();
+		for (int i = 2; i <= ccnt; ++i) {
+			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		}
+		
+		int cnt = 0;
+		while (rs.next()) {
+			if (cnt++ == 5) break;
+			out.println("<tr onclick='onClickHandler(" + rs.getString(1) + ")' onmouseover=\"changeColor(this, '#FFFFFF', '#008ee2')\">");
+			out.println("<td>" + rs.getString(2) + "</td>");
+			out.println("<td>" + rs.getString(3) + "</td>");
+			out.println("<td>" + rs.getFloat(4) + "</td>");
+			out.println("</tr>");
+		}
+		out.println("</table>");
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+%>
 	
 
 	
 	</div>
-	
-	
 	
 	<script type="text/javascript">
 	function onClickHandler(movieID) {

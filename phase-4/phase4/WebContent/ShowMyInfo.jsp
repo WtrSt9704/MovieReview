@@ -60,7 +60,7 @@ td {
 	conn = Util.makeConnection();
 
 	String userID = (String)session.getAttribute("userID");
-	String sql = "select phone_number, name, membership_grade, job, address, birtdday, password, id from account where id = " + "'" + userID + "'";
+	String sql = "select phone_number, name, membership_grade, job, address, birthday, password, id from account where id = " + "'" + userID + "'";
 	
 	int cnt = 0;
 	try {

@@ -28,7 +28,7 @@
 	try {
 		pstmt.setString(1, id);
 		pstmt.executeUpdate();
-		
+		conn.commit();
 		if (pstmt != null)
 			pstmt.close();
 	} catch (SQLException e) {
