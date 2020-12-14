@@ -53,7 +53,7 @@
 	conn = Util.makeConnection();
 %>
 <div class="box">
-	<h4>------------ Result ----------</h4>
+<br>
 <%
 	String title = request.getParameter("search_data");
 	String[] types = request.getParameterValues("mtypes");

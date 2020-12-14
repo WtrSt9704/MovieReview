@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.text.*, java.sql.*, km.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,17 +80,84 @@
 		<label><input type="checkbox" id="ES" name="versions" value="ES"/>ES</label>
 		<label><input type="checkbox" id="FR" name="versions" value="FR"/>FR</label>
 	</div>
-	
-	<h4>Top 5 recommendations</h4>
-	
-	
+<%
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	conn = Util.makeConnection();
+%>
+	<hr>
 	<h4>Top 5 movie</h4>
+
+<%
+	String sql = "create view avg_rating as " + 
+			"select movie_id, avg(cast(stars as DECIMAL(10,2))) as ravg " +
+			"from rating " +
+			"group by movie_id " +
+			"order by ravg DESC";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.execute(); // make a view for top 5 movie
+	} catch (SQLException ex2) {
+		System.err.println("stmt error = " + ex2.getMessage());
+	}
+	
+	/* show top 5 movies */
+	try {
+		sql = "select distinct m.id, m.title, m.mtype, t.ravg " +
+				"from avg_rating t, movie m, genre_of g " +
+				"where t.movie_id = m.id and g.movie_id = t.movie_id " +
+				"order by ravg desc";
+		
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		out.println("<table border=\"1\">");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int ccnt = rsmd.getColumnCount();
+		for (int i = 2; i <= ccnt; ++i) {
+			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		}
+		
+		int cnt = 0;
+		while (rs.next()) {
+			if (cnt++ == 5) break;
+			out.println("<tr onclick='onClickHandler(" + rs.getString(1) + ")' onmouseover=\"changeColor(this, '#FFFFFF', '#008ee2')\">");
+			out.println("<td>" + rs.getString(2) + "</td>");
+			out.println("<td>" + rs.getString(3) + "</td>");
+			out.println("<td>" + rs.getFloat(4) + "</td>");
+			out.println("</tr>");
+		}
+		out.println("</table>");
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+%>
+	<hr>
+	<h4>Top 5 recommendations</h4>
+
+
+	
+
 	
 	</div>
 	
 	
 	
+	<script type="text/javascript">
+	function onClickHandler(movieID) {
+		document.location.href = "ShowDetail.jsp?movieID=" + movieID;
+		
+	}
 	
+	function changeColor(obj, oldColor, newColor) {
+		obj.style.backgroundColor = newColor;
+		obj.onmouseout = function(){
+			obj.style.backgroundColor = oldColor;
+		}
+	}
+</script>
 </form>
 
 </body>
