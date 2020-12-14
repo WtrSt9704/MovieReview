@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td>Birthday(yyyy-mm-dd)</td>
-		<td><input type = "text" name ="birthday"></td>
+		<td><input type = "date" name ="birthday"></td>
 	</tr>
 	<tr>
 		<td>Job</td>
@@ -59,8 +59,8 @@
 		<td><input type = "text" name ="address"></td>
 	</tr>
 	<tr>
-		<td><input type = "submit" value ="Submit"/></td>
-		<td><input type="button" name="cancel" value="Back" onClick="location.href='login.html'"></td>
+		<td><input  class="btn btn-primary" type = "submit" value ="Submit"/></td>
+		<td><input  class="btn btn-primary" type="button" name="cancel" value="Back" onClick="location.href='login.html'"></td>
 	</tr>
 	
 

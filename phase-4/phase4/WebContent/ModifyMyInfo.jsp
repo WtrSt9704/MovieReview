@@ -94,7 +94,7 @@
 
 <script type="text/javascript">
 	alert("Complete update");
-	location.href="MyPage.html";
+	location.href="MyPage.jsp";
 	
 </script>
 </body>

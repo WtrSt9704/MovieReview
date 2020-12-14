@@ -12,7 +12,7 @@
 </head>			
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -57,28 +57,56 @@
 		<br/><br>
 	<h4>Type</h4>
 	<div>
-		<label><input type="checkbox" id="movie" name="mtypes" value="movie"/>movie</label>
-		<label><input type="checkbox" id="tvSeries" name="mtypes" value="tvSeries"/>tvSeries</label>
-		<label><input type="checkbox" id="knuOriginal" name="mtypes" value="knuOriginal"/>knuOriginal</label>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label" ><input class="form-check-input" type="checkbox" id="movie" name="mtypes" value="movie"/>movie</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label" ><input class="form-check-input" type="checkbox" id="tvSeries" name="mtypes" value="tvSeries"/>tvSeries</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label" ><input class="form-check-input" type="checkbox" id="knuOriginal" name="mtypes" value="knuOriginal"/>knuOriginal</label>
+		</div>
 	</div>
 	
 	<h4>Genre</h4>
 	<div>
-		<label><input type="checkbox" id="Action" name="genres" value="Action"/>Action</label>
-		<label><input type="checkbox" id="Comedy" name="genres" value="Comedy"/>Comedy</label>
-		<label><input type="checkbox" id="Romance" name="genres" value="Romance"/>Romance</label>
-		<label><input type="checkbox" id="Thiller" name="genres" value="Thiller"/>Thiller</label>
-		<label><input type="checkbox" id="Sci-Fi" name="genres" value="Sci-Fi"/>Sci-Fi</label>
-		<label><input type="checkbox" id="Fantasy" name="genres" value="Fantasy"/>Fantasy</label>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Action" name="genres" value="Action"/>Action</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Comedy" name="genres" value="Comedy"/>Comedy</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Romance" name="genres" value="Romance"/>Romance</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Thiller" name="genres" value="Thiller"/>Thiller</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Sci-Fi" name="genres" value="Sci-Fi"/>Sci-Fi</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="Fantasy" name="genres" value="Fantasy"/>Fantasy</label>
+		</div>
 	</div>
 	
 	<h4>version</h4>
 	<div>
-		<label><input type="checkbox" id="UA" name="versions" value="UA"/>UA</label>	
-		<label><input type="checkbox" id="DE" name="versions" value="DE"/>DE</label>
-		<label><input type="checkbox" id="KR" name="versions" value="KR"/>KR</label>
-		<label><input type="checkbox" id="ES" name="versions" value="ES"/>ES</label>
-		<label><input type="checkbox" id="FR" name="versions" value="FR"/>FR</label>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="UA" name="versions" value="UA"/>UA</label>
+		</div>
+		<div class="form-check form-check-inline">	
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="DE" name="versions" value="DE"/>DE</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="KR" name="versions" value="KR"/>KR</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="ES" name="versions" value="ES"/>ES</label>
+		</div>
+		<div class="form-check form-check-inline">
+		<label class="form-check-label"><input class="form-check-input" type="checkbox" id="FR" name="versions" value="FR"/>FR</label>
+		</div>
 	</div>
 <%
 	Connection conn = null;
@@ -115,7 +143,7 @@
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
-		out.println("<table border=\"1\">");
+		out.println("<table class='table table-bordered'>");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int ccnt = rsmd.getColumnCount();
 		for (int i = 2; i <= ccnt; ++i) {
@@ -176,7 +204,7 @@
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
-		out.println("<table border=\"1\">");
+		out.println("<table class='table table-bordered'>");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int ccnt = rsmd.getColumnCount();
 		for (int i = 2; i <= ccnt; ++i) {

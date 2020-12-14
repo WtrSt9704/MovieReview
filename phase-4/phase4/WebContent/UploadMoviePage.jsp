@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -89,51 +89,51 @@
 	<table class="box">
 		<tr>
 			<td>Movie ID<td>
-			<td><input type="text" name="movie_id" value="<%=movie_id%>" readonly /><td>
+			<td><input class="form-control" type="text" name="movie_id" value="<%=movie_id%>" readonly /><td>
 		</tr>
 		<tr>
 			<td>Title<td>
-			<td><input type="text" name="title" required/><td>
+			<td><input class="form-control" type="text" name="title" required/><td>
 		</tr>
 		<tr>
 			<td>Movie type<br> (movie, tvSeries, knuOrigina)<td>
-			<td><input type="text" name="mtype" onChange="handleTypeChange(this)" required/><td> <!-- 유효성 검사 필요 -->
+			<td><input  class="form-control" type="text" name="mtype" onChange="handleTypeChange(this)" required/><td> <!-- 유효성 검사 필요 -->
 		</tr>
 		<tr>
 			<td>Runtime<td>
-			<td><input type="number" name="runtime" required/><td>
+			<td><input class="form-control" type="number" name="runtime" required/><td>
 		</tr>
 		<tr>
 			<td>Start_year<td>
-			<td><input type="date" name="start_year" required/><td>
+			<td><input class="form-control" type="date" name="start_year" required/><td>
 		</tr>
 		<tr>
 			<td>End_year<td>
-			<td><input type="date" name="end_year"/><td>
+			<td><input class="form-control" type="date" name="end_year"/><td>
 		</tr>
 		<tr>
 			<td>Admin ID<td>
-			<td><input type="text" name="admin_id" required/><td>
+			<td><input class="form-control" type="text" name="admin_id" required/><td>
 		</tr>
 		<tr>
 			<td>Rating<td>
-			<td><input type="number" name="rating" min="0" max="10" onchange="handleRatingChange(this)" /><td>
+			<td><input class="form-control" type="number" name="rating" min="0" max="10" onchange="handleRatingChange(this)" /><td>
 		</tr>
 		<tr>
 			<td>Num of votes<td>
-			<td><input type="number" name="votes" value="0"/><td>
+			<td><input class="form-control" type="number" name="votes" value="0"/><td>
 		</tr>
 		<tr>
 			<td>Director<td>
-			<td><input type="text" name="director"/><td>
+			<td><input class="form-control" type="text" name="director"/><td>
 		</tr>
 		<tr>
 			<td>Writer<td>
-			<td><input type="text" name="writer"/><td>
+			<td><input class="form-control" type="text" name="writer"/><td>
 		</tr>
 		<tr>
 			<td>Company<td>
-			<td><input type="text" name="company"/><td>
+			<td><input class="form-control" type="text" name="company"/><td>
 		</tr>
 		<tr>
 			<td>Description<td>
@@ -142,7 +142,7 @@
 	</table>
 	
 	
-	<center><input type="submit" value="Upload"/></center>
+	<center><input class="btn btn-primary" type="submit" value="Upload"/></center>
 	
 	</form>
 	</div>

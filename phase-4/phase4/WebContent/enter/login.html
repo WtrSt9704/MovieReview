@@ -10,26 +10,24 @@
 <body>
 
 <div class="box">
-	<h2 style="text-align: center;">Sign in</h2>
+	<h2 style="text-align: center;">SIGN UP</h2>
 	
 	<form action = "getLogin.jsp" method = "POST">
 	<!-- Practice for Input Form -->
-	<table>
+	<table class="box">
 		<tr>
 			<td>ID</td>
-			<td><input type = "text" name ="ID"></td>
+			<td><input class="form-control" type = "text" name ="ID"></td>
 		</tr>
 		<tr>
 			<td>PW</td>
-			<td><input type = "password" name ="PW"></td>
+			<td><input class="form-control" type = "password" name ="PW"></td>
 		</tr>
+		<tr>
+				<th><input type = "submit"  class="btn btn-primary" value ="LOG IN"/> </th>
+				<th style="text-align:center;"> <button type="button" class="btn btn-primary" onclick="location.href='/phase4/enter/join.jsp'">SIGN UP</button></th>
+			</tr>
 	</table>
-	 
-	<br />
-	<br />
-	<div class="box">
-		<input type = "submit" value ="Log in"/> <button type="button" onclick="location.href='/phase4/enter/join.jsp' ">Sing up</button>
-	</div>
 	
 	</form>
 	

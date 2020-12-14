@@ -37,7 +37,7 @@
 			tmp2 = birthday.substring(0, 4);
 			age = 2020 - Integer.valueOf(tmp2);
 
-			newdate = "TO_DATE('" + birthday + "','yyyy-mm-dd')";
+			newdate = "TO_DATE('" + birthday.split(" ")[0] + "','yyyy-mm-dd')";
 
 		}
 		String job = request.getParameter("job");

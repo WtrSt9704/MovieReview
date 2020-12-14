@@ -17,7 +17,6 @@
 %>
 
 <%
-	String id = request.getParameter("account_id");
 	String sql = "delete from account where id=?";
 	try {
 		pstmt = conn.prepareStatement(sql);
@@ -26,7 +25,8 @@
 	}
 	
 	try {
-		pstmt.setString(1, id);
+		String userID = (String)session.getAttribute("userID");
+		pstmt.setString(1, userID);
 		pstmt.executeUpdate();
 		conn.commit();
 		if (pstmt != null)

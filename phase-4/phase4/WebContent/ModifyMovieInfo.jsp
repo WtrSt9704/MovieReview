@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@
 //<p/>type : Action / Comedy / Romance / Adventure / Thriller / Sci-Fi / Fantasy		
 // 디렉터/라이터/컴퍼니/디스크립션
 %>
-<h2>수정할 목록을 선택해 주세요</h2>
+<center><h2>MOVIE MODIFICATION</h2></center>
 
 <%	
 	conn.setAutoCommit(false);
@@ -104,95 +104,139 @@
 	}
 
 %>
-<form action="mupdate/titleUpdate.jsp" method="get">
-Title :
-<input type="hidden" name="movieID" value=<%=movieID%>/> 
-<input type="input" name="titleInput" id = "titleInput" value="<%=title == null? "":title%>" disabled>
-<input type="submit" name = "titleButton" value="modify" disabled>
-<input type="checkbox" name="title" onClick="titleCheck(this.form)">
 
-</form>
+<div class="box">
+<table class="table table-bordered">
+	<tr>
+	<td>Title</td>
+	<td>
+		<form action="mupdate/titleUpdate.jsp" method="get">
+			<input type="hidden" name="movieID" value=<%=movieID%>/> 
+			<input class="form-control" type="input" name="titleInput" id = "titleInput" value="<%=title == null? "":title%>" disabled>
+			<input class="btn btn-primary" type="submit" name = "titleButton" value="modify" disabled>
+			<input type="checkbox" name="title" onClick="titleCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Type  <p style="font-size: 11px"/>Mtype : movie / knuOriginal / tvSeries</td>
+	<td>
+		<form action="mupdate/mtypeUpdate.jsp"  method="get">
+			<input class="form-control" type="hidden" name="movieID" value=<%=movieID%>/>
+			<input class="form-control" type="input" name="mtypeInput" id = "mtypeInput" value="<%=mtype == null? "":mtype%>" disabled>
+			<input class="btn btn-primary" type="submit" name = "mtypeButton" value="modify" disabled>
+			<input type="checkbox" name="title" onClick="titleCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Runtime <p style="font-size: 11px"/>minute unit </td>
+	<td>
+		<form action="mupdate/runTimeUpdate.jsp"  method="get">
+		<input class="form-control" type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control" type="input" name="runTimeInput" id = "runTimeInput" value="<%=runtime == null? "":runtime%>" disabled>
+		<input class="btn btn-primary"  type="submit" name = "runTimeButton" value="modify" disabled>
+		<input type="checkbox" name="runTime" onClick="runTimeCheck(this.form)">
+		
+		</form>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Start Year <p style="font-size: 11px"/>format : yyyy-dd-mm</td>
+	<td>
+		<form action="mupdate/startYearUpdate.jsp"  method="get">
+		<input class="form-control" type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control" type="date" name ="startYearInput" value="<%=start_year == null? "":start_year.split(" ")[0]%>" disabled>
+		<input  class="btn btn-primary" type="submit" name = "startYearButton" value="modify" disabled>
+		<input type="checkbox" name="startYear" onClick="startYearCheck(this.form)">
+		
+		</form>
 
-<form action="mupdate/mtypeUpdate.jsp"  method="get">
-<br/>Type : 
-<input type="hidden" name="movieID" value=<%=movieID%>/>
-<input type="input" name="mtypeInput" id = "mtypeInput" value="<%=mtype == null? "":mtype%>" disabled>
-<input type="submit" name = "mtypeButton" value="modify" disabled>
-<input type="checkbox" name="mtype" id = "mtype" onClick="TypeCheck(this.form)">
+	</td>
+	</tr>
+	
+	<tr>
+	<td>End Year <p style="font-size: 11px"/>format : yyyy-dd-mm</td>
+	<td>
+		<form action="mupdate/endYearUpdate.jsp" method="get"> 
+		<input class="form-control" type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control" type="date" name ="endYearInput" value="<%=end_year == null? "":end_year.split(" ")[0]%>" disabled>
+		<input  class="btn btn-primary" type="submit" name = "endYearButton" value="modify" disabled>
+		<input type="checkbox" name="endYear" onClick="endYearCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Writer</td>
+	<td>
+		<form action="mupdate/writerUpdate.jsp" method="get">
+		<input class="form-control" type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control" type="input" name="WriterInput" value="<%=writer == null? "":writer%>" disabled>
+		<input class="btn btn-primary" type="submit" name = "writerButton" value="modify" disabled>
+		<input type="checkbox" name="Writer" onClick="WriterCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Director</td>
+	<td>
+		<form action="mupdate/directorUpdate.jsp" method="get">
+		<input class="form-control"  type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control"  type="input" name="directorInput" value="<%=director == null? "":director%>" disabled>
+		<input class="btn btn-primary" type="submit" name = "directorButton" value="modify" disabled>
+		<input type="checkbox" name="director" onClick="directorCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	<tr>
+	<td>Vote</td>
+	<td>
+		<form action="mupdate/voteUpdate.jsp" method="get">
+		<input type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control"  type="input" name="voteInput" value="<%=num_of_votes == null? "":num_of_votes%>" disabled>
+		<input class="btn btn-primary" type="submit" name = "voteButton" value="modify" disabled>
+		<input type="checkbox" name="vote" onClick="voteCheck(this.form)">
+		</form>
+	</td>
+	</tr>
+	
+	
+	<tr>
+	<td>Company</td>
+	<td>
+		<form action="mupdate/companyUpdate.jsp" method="get">
+		<input type="hidden" name="movieID" value=<%=movieID %>/>
+		<input class="form-control"  type="input" name="companyInput" value="<%=company == null? "":company%>" disabled>
+		<input class="btn btn-primary" type="submit" name = "companyButton" value="modify" disabled>
+		<input type="checkbox" name="company" onClick="companyCheck(this.form)">
+		</form>	
+	</td>
+	</tr>
+	
+	
+	<tr>
+	<td>Description</td>
+	<td>
+		<form action="mupdate/descriptionUpdate.jsp" method="get">
+		<input type="hidden" name="movieID" value=<%=movieID %>/>
+		<br/><input type="input" class="form-control"  style="height: 40px; width: 500px;'" name="descriptionInput" value="<%=descriptions == null? "":descriptions%>" disabled>
+		<input class="btn btn-primary" type="submit" name = "descriptionButton" value="modify" disabled>
+		<input type="checkbox" name="description" onClick="descriptionCheck(this.form)">
+		</form>
 
-<p style="font-size: 11px"/>Mtype : movie / knuOriginal / tvSeries
-</form>
+	</td>
+	</tr>
+	
+	
+</table>
 
-<form action="mupdate/runTimeUpdate.jsp"  method="get">
-<br/>Runtime : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="input" name="runTimeInput" id = "runTimeInput" value="<%=runtime == null? "":runtime%>" disabled>
-<input type="submit" name = "runTimeButton" value="modify" disabled>
-<input type="checkbox" name="runTime" onClick="runTimeCheck(this.form)">
-<p style="font-size: 11px"/>분단위로 입력해 주세요
-</form>
-
-<form action="mupdate/startYearUpdate.jsp"  method="get">
-<br/>Start Year : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="date" name ="startYearInput" value="<%=start_year == null? "":start_year.split(" ")[0]%>" disabled>
-<input type="submit" name = "startYearButton" value="modify" disabled>
-<input type="checkbox" name="startYear" onClick="startYearCheck(this.form)">
-<p style="font-size: 11px"/>format : yyyy-dd-mm
-</form>
-
-<form action="mupdate/endYearUpdate.jsp" method="get">
-<br/>End Year : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="date" name ="endYearInput" value="<%=end_year == null? "":end_year.split(" ")[0]%>" disabled>
-<input type="submit" name = "endYearButton" value="modify" disabled>
-<input type="checkbox" name="endYear" onClick="endYearCheck(this.form)">
-<p style="font-size: 11px"/>format : yyyy-dd-mm
-</form>
-
-
-<form action="mupdate/writerUpdate.jsp" method="get">
-<br/>Writer : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="input" name="WriterInput" value="<%=writer == null? "":writer%>" disabled>
-<input type="submit" name = "writerButton" value="modify" disabled>
-<input type="checkbox" name="Writer" onClick="WriterCheck(this.form)">
-</form>
-
-<form action="mupdate/directorUpdate.jsp" method="get">
-<br/>Director : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="input" name="directorInput" value="<%=director == null? "":director%>" disabled>
-<input type="submit" name = "directorButton" value="modify" disabled>
-<input type="checkbox" name="director" onClick="directorCheck(this.form)">
-</form>
-
-<form action="mupdate/voteUpdate.jsp" method="get">
-<br/>vote : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="input" name="voteInput" value="<%=num_of_votes == null? "":num_of_votes%>" disabled>
-<input type="submit" name = "voteButton" value="modify" disabled>
-<input type="checkbox" name="vote" onClick="voteCheck(this.form)">
-</form>
-
-<form action="mupdate/companyUpdate.jsp" method="get">
-<br/>Company : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<input type="input" name="companyInput" value="<%=company == null? "":company%>" disabled>
-<input type="submit" name = "companyButton" value="modify" disabled>
-<input type="checkbox" name="company" onClick="companyCheck(this.form)">
-</form>
-
-<form action="mupdate/descriptionUpdate.jsp" method="get">
-<br/>Description : 
-<input type="hidden" name="movieID" value=<%=movieID %>/>
-<br/><input type="input" style="height: 40px; width: 500px;'" name="descriptionInput" value="<%=descriptions == null? "":descriptions%>" disabled>
-<input type="submit" name = "descriptionButton" value="modify" disabled>
-<input type="checkbox" name="description" onClick="descriptionCheck(this.form)">
-</form>
-
-<br/><input type="button" name = "back" id = "back" onclick="location.href='ShowDetail.jsp'" value="뒤로가기">
-
+<br/><input class="btn btn-primary" type="button" name = "back" id = "back" onclick="location.href='ShowDetail.jsp'" value="BACK">
+</div>
 <script type="text/javascript">
 
 function titleCheck(frm)

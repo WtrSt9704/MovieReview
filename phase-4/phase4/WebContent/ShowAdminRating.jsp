@@ -32,7 +32,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -71,7 +71,7 @@ sql = "select movie.Title,Rating.stars FROM MOVIE, RATING where rating.Movie_id 
 pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
 out.println("<h3>-----Rating-----</h3>");
-out.println("<table border = \"1\">");
+out.println("<table class='table table-bordered'>");
 out.println("<th>id</th>");
 out.println("<th>Title</th>");
 out.println("<th>Rating</th>");
@@ -88,6 +88,6 @@ out.println("</table>");
 
 %>
 <%--back 버튼 --%>
-<input type="button" name = "Back" onclick="location.href='menu.jsp'" value="goBack">
+<input class="btn btn-primary" type="button" name = "Back" onclick="location.href='menu.jsp'" value="goBack">
 </body>
 </html>

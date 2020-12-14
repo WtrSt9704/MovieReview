@@ -20,7 +20,7 @@ td {
 <link rel="stylesheet" href="./css/basic.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -106,42 +106,42 @@ td {
 
 <form action="ModifyMyInfo.jsp" action="POST">
 <div class="box">
-	<h1> My Information </h1>
+	<center><h1> My Information </h1></center>
 	<table >
 		<tr>
 			<td>ID</td>
-			<td><input type="text" name="id" value="<%=id == null? "":id%>" disabled /> </td>
+			<td><input class="form-control" type="text" name="id" value="<%=id == null? "":id%>" disabled /> </td>
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><input type="text" name="password" value="<%=password == null? "":password%>" required/> </td>
+			<td><input class="form-control" type="text" name="password" value="<%=password == null? "":password%>" required/> </td>
 		</tr>
 		<tr>
 			<td>Phone number</td>
-			<td><input type="text" name="phone_number" value="<%=phone_number == null? "":phone_number%>" required></td>
+			<td><input class="form-control" type="text" name="phone_number" value="<%=phone_number == null? "":phone_number%>" required></td>
 		</tr>
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="name" value="<%=name == null?"":name%>"></td>
+			<td><input class="form-control" type="text" name="name" value="<%=name == null?"":name%>"></td>
 		</tr>
 		<tr>
 			<td>Membership(between 0 and 3)</td>
-			<td><input type="number" name="membership" onchange="handleChange(tdis)" min="0" max="3" value="<%=membership == null?"":membership%>" required></td>
+			<td><input class="form-control" type="number" name="membership" onchange="handleChange(tdis)" min="0" max="3" value="<%=membership == null?"":membership%>" required></td>
 		</tr>
 		<tr>
 			<td>Job</td>
-			<td><input type="text" name="job" value="<%=job == null? "":job%>"></td>
+			<td><input class="form-control" type="text" name="job" value="<%=job == null? "":job%>"></td>
 		</tr>
 		<tr>
 			<td>Address</td>
-			<td><input type="text" name="address" value="<%=address == null? "":address%>"></td>
+			<td><input class="form-control" type="text" name="address" value="<%=address == null? "":address%>"></td>
 		</tr>
 		<tr>
 			<td>birthday</td>
-			<td><input type="date" name="birthday" value="<%=birthday != null? birthday.split(" ")[0] : ""%>"></td>
+			<td><input class="form-control" type="date" name="birthday" value="<%=birthday != null? birthday.split(" ")[0] : ""%>"></td>
 		</tr>
 	</table>
-	<center><input type="submit" value="Modify"/></center>
+	<center><input class="btn btn-primary" type="submit" value="Modify"/></center>
 </div>
 
 

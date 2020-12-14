@@ -34,7 +34,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  style="margin-bottom:30px">
   <a class="navbar-brand" href="LandingPage.jsp">KnuMovie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -74,8 +74,8 @@
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		out.println("<div class='box'>");
-		out.println("<center><h3>Rating</h3></center>");
-		out.println("<table border = \"1\">");
+		out.println("<center><h3>MY EVALUATING</h3></center>");
+		out.println("<table class='table table-bordered'>");
 		out.println("<th>id</th>");
 		out.println("<th>Title</th>");
 		out.println("<th>Rating</th>");
